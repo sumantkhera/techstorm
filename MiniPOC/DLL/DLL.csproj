@@ -1,0 +1,272 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{042A912A-4767-44CE-91E7-DA32FB824327}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DLL</RootNamespace>
+    <AssemblyName>DLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressTemp.cs" />
+    <Compile Include="Audit_History.cs" />
+    <Compile Include="BaseMortgagee.cs" />
+    <Compile Include="BaseShortRate.cs" />
+    <Compile Include="BaseSingleRate.cs" />
+    <Compile Include="Base_CommonNew.cs" />
+    <Compile Include="BatchChequeDetail.cs" />
+    <Compile Include="BatchChequeDetailsLog.cs" />
+    <Compile Include="BatchSummary.cs" />
+    <Compile Include="Billing.cs" />
+    <Compile Include="ClaimAddOnCoverage.cs" />
+    <Compile Include="ClaimDocument.cs" />
+    <Compile Include="ClaimLimitationDetail.cs" />
+    <Compile Include="ClaimMortgage.cs" />
+    <Compile Include="ClaimStatu.cs" />
+    <Compile Include="Claim_AdjusterNotes.cs" />
+    <Compile Include="Claim_ClaimantItemDetail.cs" />
+    <Compile Include="Claim_Comments.cs" />
+    <Compile Include="Claim_ItemsCoveredType.cs" />
+    <Compile Include="Claim_Name.cs" />
+    <Compile Include="Claim_Occurence.cs" />
+    <Compile Include="Claim_PayOut.cs" />
+    <Compile Include="Claim_PayOutHistory.cs" />
+    <Compile Include="Claim_ReinsuranceTransaction.cs" />
+    <Compile Include="Claim_ReserveDetails.cs" />
+    <Compile Include="Claim_ReserveHistory.cs" />
+    <Compile Include="Claim_StatementofLoss.cs" />
+    <Compile Include="ClientDetail.cs" />
+    <Compile Include="Cmn_Address.cs" />
+    <Compile Include="Cmn_QuestionAnswer.cs" />
+    <Compile Include="CoinsuranceDetail.cs" />
+    <Compile Include="CompanyToSubCompany.cs" />
+    <Compile Include="CoverageDetail.cs" />
+    <Compile Include="DiaryNote.cs" />
+    <Compile Include="DiseaseDetail.cs" />
+    <Compile Include="DiseaseDetailsTemp.cs" />
+    <Compile Include="EarnedPremiumSummary.cs" />
+    <Compile Include="EarnedPremiumTranscation.cs" />
+    <Compile Include="Employer.cs" />
+    <Compile Include="ExcelInformation.cs" />
+    <Compile Include="ExceptionLogger.cs" />
+    <Compile Include="Fact_Info.cs" />
+    <Compile Include="FundSchemeValue.cs" />
+    <Compile Include="HealthInfo.cs" />
+    <Compile Include="HealthInfoTemp.cs" />
+    <Compile Include="MasterCoverageSumInsured.cs" />
+    <Compile Include="MasterDisease.cs" />
+    <Compile Include="MasterDocument.cs" />
+    <Compile Include="MasterFrequency.cs" />
+    <Compile Include="MemberAddonCoverage.cs" />
+    <Compile Include="MemberAddonCoverageTemp.cs" />
+    <Compile Include="MemberCoverageInfo.cs" />
+    <Compile Include="MemberCoverageInfoTemp.cs" />
+    <Compile Include="MemberDocument.cs" />
+    <Compile Include="MemberLoan.cs" />
+    <Compile Include="MemberLoanTemp.cs" />
+    <Compile Include="Mnu_Authority.cs" />
+    <Compile Include="MortgageFinancialDetail.cs" />
+    <Compile Include="MortgageIncomeExpence.cs" />
+    <Compile Include="MortgageLifePolicy.cs" />
+    <Compile Include="MortgagePropertyDetail.cs" />
+    <Compile Include="MstClaimLimitation.cs" />
+    <Compile Include="Mst_AddOnCoverage.cs" />
+    <Compile Include="Mst_AddressArea.cs" />
+    <Compile Include="Mst_AddressBlock.cs" />
+    <Compile Include="Mst_AddressRisk.cs" />
+    <Compile Include="Mst_AddressZone.cs" />
+    <Compile Include="Mst_AnnuityBenefitPlans.cs" />
+    <Compile Include="Mst_Branch.cs" />
+    <Compile Include="Mst_BrokerCommissions.cs" />
+    <Compile Include="Mst_ClaimAddOnCoverage.cs" />
+    <Compile Include="Mst_ClaimDocument.cs" />
+    <Compile Include="Mst_ClaimLossCause.cs" />
+    <Compile Include="Mst_ClaimStatus.cs" />
+    <Compile Include="Mst_Claim_Range.cs" />
+    <Compile Include="Mst_Country.cs" />
+    <Compile Include="Mst_Coverage.cs" />
+    <Compile Include="Mst_CreditRating.cs" />
+    <Compile Include="Mst_Currency.cs" />
+    <Compile Include="Mst_CustomerStatus.cs" />
+    <Compile Include="mst_DocumentType.cs" />
+    <Compile Include="mst_EndorsementType.cs" />
+    <Compile Include="Mst_Expense.cs" />
+    <Compile Include="Mst_Grp.cs" />
+    <Compile Include="Mst_InvestmentApproach.cs" />
+    <Compile Include="Mst_LOB.cs" />
+    <Compile Include="Mst_LOBCountry.cs" />
+    <Compile Include="Mst_MasterGrp.cs" />
+    <Compile Include="Mst_Mnu.cs" />
+    <Compile Include="Mst_Nationality.cs" />
+    <Compile Include="Mst_NavSetup.cs" />
+    <Compile Include="Mst_Occupation.cs" />
+    <Compile Include="Mst_Payee.cs" />
+    <Compile Include="Mst_PolicyClass.cs" />
+    <Compile Include="Mst_PolicyTerm.cs" />
+    <Compile Include="Mst_ProducerCode.cs" />
+    <Compile Include="MST_ProducerName.cs" />
+    <Compile Include="Mst_Proposal.cs" />
+    <Compile Include="Mst_Question.cs" />
+    <Compile Include="Mst_Range.cs" />
+    <Compile Include="Mst_Receipt_Range.cs" />
+    <Compile Include="Mst_ReInsurer.cs" />
+    <Compile Include="Mst_Relationship.cs" />
+    <Compile Include="Mst_ReviewedDocument.cs" />
+    <Compile Include="Mst_RiskPreference.cs" />
+    <Compile Include="Mst_Salutation.cs" />
+    <Compile Include="Mst_SystemVariable.cs" />
+    <Compile Include="Mst_Tabs.cs" />
+    <Compile Include="Mst_TradeGroup.cs" />
+    <Compile Include="Mst_TransType.cs" />
+    <Compile Include="Mst_TrinreDetail.cs" />
+    <Compile Include="Mst_Usr.cs" />
+    <Compile Include="Mst_WorkShop.cs" />
+    <Compile Include="NavPayment.cs" />
+    <Compile Include="PaymentInfo.cs" />
+    <Compile Include="PaymentInfoLog.cs" />
+    <Compile Include="PensionSourceOfFundsTemp.cs" />
+    <Compile Include="PersonalInfo.cs" />
+    <Compile Include="PersonalInfoTemp.cs" />
+    <Compile Include="PersonnelIdentityTemp.cs" />
+    <Compile Include="Personnel_Identity.cs" />
+    <Compile Include="POCEntities.cs" />
+    <Compile Include="PolicyApproveDetail.cs" />
+    <Compile Include="PolicyCoverage.cs" />
+    <Compile Include="PolicyCoverTemp.cs" />
+    <Compile Include="PolicyDocument.cs" />
+    <Compile Include="PolicyHolderInfo.cs" />
+    <Compile Include="PolicyInfo.cs" />
+    <Compile Include="PolicyInfoTemp.cs" />
+    <Compile Include="PolicyInvestmentApproach.cs" />
+    <Compile Include="PolicyPooledInvestment.cs" />
+    <Compile Include="PolicyRiskPreference.cs" />
+    <Compile Include="PremiumInfo.cs" />
+    <Compile Include="Prem_RateNew.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReinsuranceTransaction.cs" />
+    <Compile Include="ReinsuranceTransactionHistory.cs" />
+    <Compile Include="RemittanceAdvice.cs" />
+    <Compile Include="RenewalPolicy.cs" />
+    <Compile Include="SourceOfFund.cs" />
+    <Compile Include="sysdiagram.cs" />
+    <Compile Include="Transaction_Details.cs" />
+    <Compile Include="VoucherDetail.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60392</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60392/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
