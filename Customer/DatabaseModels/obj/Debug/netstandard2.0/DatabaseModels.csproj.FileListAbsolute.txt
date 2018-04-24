@@ -1,6 +1,0 @@
-C:\Users\User\Downloads\Test\DatabaseModels\bin\Debug\netstandard2.0\DatabaseModels.deps.json
-C:\Users\User\Downloads\Test\DatabaseModels\bin\Debug\netstandard2.0\DatabaseModels.dll
-C:\Users\User\Downloads\Test\DatabaseModels\obj\Debug\netstandard2.0\DatabaseModels.csprojResolveAssemblyReference.cache
-C:\Users\User\Downloads\Test\DatabaseModels\obj\Debug\netstandard2.0\DatabaseModels.csproj.CoreCompileInputs.cache
-C:\Users\User\Downloads\Test\DatabaseModels\obj\Debug\netstandard2.0\DatabaseModels.AssemblyInfoInputs.cache
-C:\Users\User\Downloads\Test\DatabaseModels\obj\Debug\netstandard2.0\DatabaseModels.AssemblyInfo.cs
