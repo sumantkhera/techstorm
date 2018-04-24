@@ -1,14 +1,16 @@
-﻿using System.Data.Entity;
-using Test.Models;
+﻿using Database.Models;
+using System.Data.Entity;
 
-namespace Test.Context
+namespace Database.Context
 {
     public class DatabaseContext : DbContext
     {
         public DatabaseContext() : base("DefaultConnection") {
 
         }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerDetails> CustomerDetails { get; set; }
 
-        
+
     }
 }

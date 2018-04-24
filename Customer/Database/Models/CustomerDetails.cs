@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Models
 {
@@ -7,8 +8,8 @@ namespace Database.Models
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public Customer Customer { get; set; }
-
         public string PrimaryAddress1 { get; set; }
         public string PrimaryAddress2 { get; set; }
         public string PrimaryCity { get; set; }
@@ -20,5 +21,7 @@ namespace Database.Models
         public string SecondaryCity { get; set; }
         public string SecondaryState { get; set; }
         public int SecondaryZipcode { get; set; }
+
+
     }
 }

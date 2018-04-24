@@ -3,6 +3,5 @@ Customer/Database/bin/*
 Customer/Database/obj/*
 Customer/Test/bin/*
 Customer/Test/obj/*
-
-
-
+Customer/Customer/bin/*
+Customer/Customer/obj/*
