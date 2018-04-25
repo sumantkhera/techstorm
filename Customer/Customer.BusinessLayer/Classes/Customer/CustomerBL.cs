@@ -28,12 +28,13 @@ namespace Customer.BusinessLayer.Classes.Customer
         public object AddCustomer(CustomerDetailViewModel customer)
         {
             var obje = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customer);
-            throw new Exception("Duplicate Record.");
+            return 1;
+            //throw new Exception("Duplicate Record.");
         }
 
         public object UpdateCustomer(CustomerDetailViewModel customer)
         {
-            throw new NotImplementedException();
+            return 1;
         }
     }
 }

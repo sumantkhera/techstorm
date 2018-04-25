@@ -20,7 +20,7 @@
 
         #region Get
 
-        [HttpGet]
+        [HttpPost, Route("GetCustomerList")]
         public IHttpActionResult GetCustomerList(CustomerSearchViewModel customerfilter)
         {
             try
@@ -38,7 +38,7 @@
         #endregion
 
         #region Post
-        [HttpPost]
+        [HttpPost, Route("AddCustomer")]
         public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
         {
             var result = this._customerBL.AddCustomer(customer);
@@ -48,7 +48,7 @@
         #endregion
 
         #region Put
-        [HttpPut]
+        [HttpPut, Route("UpdateCustomer")]
         public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
         {
             try

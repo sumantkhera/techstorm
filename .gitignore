@@ -12,4 +12,5 @@ Customer/Customer.BusinessLayer/obj/*
 Customer/Customer.DataLayer/bin/*
 Customer/Customer.DataLayer/obj/*
 Customer/Customer.BusinessEntities/bin/*
-
+Customer/CustomerAuthentication/bin/*
+Customer/CustomerAuthentication/obj/*
