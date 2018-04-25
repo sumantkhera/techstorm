@@ -29,8 +29,15 @@ namespace Customer
                 Newtonsoft.Json.Formatting.Indented;
 
             //For converting data in Camel Case
-            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
-                new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =new CamelCasePropertyNamesContractResolver();
+
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
+
+            //json.Serialivar corsAttr = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(corsAttr);
+            //config.MapHttpAttributeRoutes();
+
         }
     }
 }

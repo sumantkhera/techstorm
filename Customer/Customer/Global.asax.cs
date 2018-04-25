@@ -14,6 +14,8 @@ namespace Customer
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
+            UnityWebApiActivator.Start();
+            //Bootstrapper.Initialise();
         }
     }
 }

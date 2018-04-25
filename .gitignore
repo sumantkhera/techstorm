@@ -5,3 +5,10 @@ Customer/Test/bin/*
 Customer/Test/obj/*
 Customer/Customer/bin/*
 Customer/Customer/obj/*
+Customer/Customer.BusinessLayer/bin/*
+Customer/Customer.BusinessEntities/obj/*
+Customer/Customer.BusinessLayer/bin/*
+Customer/Customer.BusinessLayer/obj/*
+Customer/Customer.DataLayer/bin/*
+Customer/Customer.DataLayer/obj/*
+Customer/Customer.BusinessEntities/bin/*

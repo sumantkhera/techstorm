@@ -1,4 +1,4 @@
-﻿using Database.Context;
+﻿using Customer.BusinessLayer.Interface.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +9,18 @@ namespace Customer.Controllers
 {
     public class CustomerController : ApiController
     {
-        //Creating Instance of DatabaseContext class  
-        private DatabaseContext db = new DatabaseContext();
+        private ICustomerBL _customerBL;
+        public CustomerController(ICustomerBL customerBL)
+        {
+            this._customerBL = customerBL;
+        }
 
-        //Creating a method to return Json data   
         [HttpGet]
         public IHttpActionResult Get()
         {
             try
             {
-                //Prepare data to be returned using Linq as follows  
-                var result = from customer in db.Customers
-                             select new
-                             {
-                                 customer.BusinessName,
-                                 customer.ClassificationId,
-                             };
+                var result = this._customerBL.GetCustomerList();
                 return Ok(result);
             }
             catch (Exception ex)
