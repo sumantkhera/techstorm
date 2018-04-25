@@ -1,6 +1,14 @@
+using Customer.BusinessLayer.Classes.Classification;
+using Customer.BusinessLayer.Classes.ClientType;
 using Customer.BusinessLayer.Classes.Customer;
+using Customer.BusinessLayer.Interface.Classification;
+using Customer.BusinessLayer.Interface.ClientType;
 using Customer.BusinessLayer.Interface.Customer;
+using Customer.DataLayer.Classes.Classification;
+using Customer.DataLayer.Classes.ClientType;
 using Customer.DataLayer.Classes.Customer;
+using Customer.DataLayer.Interface.Classification;
+using Customer.DataLayer.Interface.ClientType;
 using Customer.DataLayer.Interface.Customer;
 using System;
 
@@ -45,8 +53,17 @@ namespace Customer
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
+            #region DAL
             container.RegisterType<ICustomerRepository, CustomerRepository>();
+            container.RegisterType<IClassificationRepository, ClassificationRepository>();
+            container.RegisterType<IClientTypeRepository, ClientTypeRepository>();
+            #endregion
+
+            #region BAL
             container.RegisterType<ICustomerBL, CustomerBL>();
+            container.RegisterType<IClassificationBL, ClassificationBL>();
+            container.RegisterType<IClientTypeBL, ClientTypeBL>();
+            #endregion
         }
     }
 }

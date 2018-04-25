@@ -17,9 +17,19 @@ namespace Customer.BusinessLayer.Classes.Customer
             this._customerService = customerService;
         }
 
-        public IEnumerable<CustomerListViewModel> GetCustomerList()
+        public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
-            return _customerService.GetCustomerList();
+            return _customerService.GetCustomerList(customerSearchViewModel);
+        }
+
+        public object AddCustomer(CustomerDetailViewModel customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object UpdateCustomer(CustomerDetailViewModel customer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

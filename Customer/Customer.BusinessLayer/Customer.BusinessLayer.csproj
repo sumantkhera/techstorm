@@ -72,7 +72,11 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
+    <Compile Include="Classes\Classification\ClassificationBL.cs" />
+    <Compile Include="Classes\ClientType\ClientTypeBL.cs" />
     <Compile Include="Classes\Customer\CustomerBL.cs" />
+    <Compile Include="Interface\Classification\IClassificationBL.cs" />
+    <Compile Include="Interface\ClientType\IClientTypeBL.cs" />
     <Compile Include="Interface\Customer\ICustomerBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,7 +9,11 @@ namespace Database.Context
 
         }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<CustomerDetails> CustomerDetails { get; set; }
+        public DbSet<CustomerDetail> CustomerDetails { get; set; }
+
+        public DbSet<Classification> Classifications { get; set; }
+
+        public DbSet<ClientType> ClientTypes { get; set; }
 
 
     }

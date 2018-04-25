@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classification\ClassificationViewModel.cs" />
+    <Compile Include="ClientType\ClientTypeViewModel.cs" />
     <Compile Include="Common\FilterBaseClass.cs" />
     <Compile Include="Customer\CustomerDetailViewModel.cs" />
     <Compile Include="Customer\CustomerListViewModel.cs" />
