@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Customer.BusinessEntities.Customer;
+using AutoMapper;
+using Customer.BusinessEntities.ClientType;
+using Customer.BusinessLayer.Mapping;
 
 namespace Customer.BusinessLayer.Classes.Customer
 {
@@ -24,7 +27,8 @@ namespace Customer.BusinessLayer.Classes.Customer
 
         public object AddCustomer(CustomerDetailViewModel customer)
         {
-            throw new NotImplementedException();
+            var obje = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customer);
+            throw new Exception("Duplicate Record.");
         }
 
         public object UpdateCustomer(CustomerDetailViewModel customer)

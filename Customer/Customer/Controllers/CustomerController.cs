@@ -41,16 +41,8 @@
         [HttpPost]
         public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
         {
-            try
-            {
-                var result = this._customerBL.AddCustomer(customer);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
-            }
+            var result = this._customerBL.AddCustomer(customer);
+            return Ok(result);
         }
 
         #endregion
