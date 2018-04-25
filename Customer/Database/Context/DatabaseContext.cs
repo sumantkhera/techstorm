@@ -15,6 +15,10 @@ namespace Database.Context
 
         public DbSet<ClientType> ClientTypes { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        
+
 
     }
 }

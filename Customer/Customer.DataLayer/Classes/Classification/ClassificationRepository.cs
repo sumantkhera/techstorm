@@ -1,8 +1,10 @@
 ﻿using Customer.BusinessEntities.Classification;
 using Customer.DataLayer.Interface.Classification;
+using Dapper;
 using Database.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Customer.DataLayer.Classes.Classification
@@ -11,15 +13,10 @@ namespace Customer.DataLayer.Classes.Classification
     {
         public IEnumerable<ClassificationViewModel> GetClassificationList()
         {
-            using (var databaseContext = new DatabaseContext())
+            string query = "SELECT Id,ClassificationName FROM Classifications where IsDeleted =0 ";
+            using (SqlConnection con = new SqlConnection(base.DBConnectionString))
             {
-                var result = from classification in databaseContext.Classifications
-                             select (new ClassificationViewModel
-                             {
-                                 Id = classification.Id,
-                                 ClassificationName = classification.ClassificationName,
-                             });
-                return result.ToList();
+                return con.Query<ClassificationViewModel>(query);
             }
         }
     }

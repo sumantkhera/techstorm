@@ -112,12 +112,21 @@
     <Compile Include="Migrations\201804250745071_Update Key.Designer.cs">
       <DependentUpon>201804250745071_Update Key.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804251446194_User.cs" />
+    <Compile Include="Migrations\201804251446194_User.Designer.cs">
+      <DependentUpon>201804251446194_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804251447341_User1.cs" />
+    <Compile Include="Migrations\201804251447341_User1.Designer.cs">
+      <DependentUpon>201804251447341_User1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Classification.cs" />
     <Compile Include="Models\ClientType.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerDetail.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804250745071_Update Key.resx">
       <DependentUpon>201804250745071_Update Key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251446194_User.resx">
+      <DependentUpon>201804251446194_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251447341_User1.resx">
+      <DependentUpon>201804251447341_User1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

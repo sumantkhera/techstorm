@@ -6,22 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Customer.BusinessEntities.ClientType;
 using Database.Context;
+using System.Data.SqlClient;
+using Dapper;
 
 namespace Customer.DataLayer.Classes.ClientType
 {
-    public class ClientTypeRepository : IClientTypeRepository
+    public class ClientTypeRepository : BaseRepository, IClientTypeRepository
     {
         public IEnumerable<ClientTypeViewModel> GetClientTypeList()
         {
-            using (var databaseContext = new DatabaseContext())
+            string query = "SELECT Id,ClientTypeName FROM ClientTypes where IsDeleted =0 ";
+            using (SqlConnection con = new SqlConnection(base.DBConnectionString))
             {
-                var result = from clientTypes in databaseContext.ClientTypes
-                             select (new ClientTypeViewModel
-                             {
-                                 Id = clientTypes.Id,
-                                 ClientTypeName = clientTypes.ClientTypeName,
-                             });
-                return result.ToList();
+                return con.Query<ClientTypeViewModel>(query);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Customer.BusinessLayer.Interface.Classification;
 using Customer.BusinessLayer.Interface.ClientType;
+using Customer.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace Customer.Controllers
 {
+    [CustomAuthorizeAttribute]
     public class ClientTypeController : ApiController
     {
         #region Constructor

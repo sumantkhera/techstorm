@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ClassificationController.cs" />
     <Compile Include="Controllers\ClientTypeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
