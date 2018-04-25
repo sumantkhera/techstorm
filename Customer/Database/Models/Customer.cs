@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Database.Models
 {
-    public class Customer
+    public class Customer : BaseModel
     {
         [Key]
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace Database.Models
         public string PrimaryContact { get; set; }
 
 
-        public CustomerDetails CustomerDetails { get; set; }
+        public CustomerDetail CustomerDetails { get; set; }
     }
 }

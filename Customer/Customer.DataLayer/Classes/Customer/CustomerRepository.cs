@@ -11,15 +11,18 @@ namespace Customer.DataLayer.Classes.Customer
 {
     public class CustomerRepository : ICustomerRepository
     {
-        public IEnumerable<CustomerListViewModel> GetCustomerList()
+        public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
-            DatabaseContext databaseContext = new DatabaseContext();
-            var result = from customer in databaseContext.Customers
-                         select (new CustomerListViewModel
-                         {
-
-                         });
-            return result;
+            using (var databaseContext = new DatabaseContext())
+            {
+                var result = from customer in databaseContext.Customers
+                             select (new CustomerListViewModel
+                             {
+                                 BusinessName = customer.BusinessName,
+                                 Id = customer.Id,
+                             });
+                return result.ToList();
+            }
         }
     }
 }

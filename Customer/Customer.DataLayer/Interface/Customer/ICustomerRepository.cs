@@ -9,6 +9,6 @@ namespace Customer.DataLayer.Interface.Customer
 {
     public interface ICustomerRepository
     {
-        IEnumerable<CustomerListViewModel> GetCustomerList();
+        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel);
     }
 }

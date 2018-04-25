@@ -1,4 +1,5 @@
-﻿using Database.Context;
+﻿using Customer.BusinessLayer.Mapping;
+using Database.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Customer
             GlobalConfiguration.Configure(WebApiConfig.Register);
             System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
             UnityWebApiActivator.Start();
-            //Bootstrapper.Initialise();
+            AutoMapperConfiguration.ConfigureAll();
         }
     }
 }

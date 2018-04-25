@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Models
 {
-    public class CustomerDetails
+    public class CustomerDetail : BaseModel
     {
         [Key]
         public int Id { get; set; }
@@ -15,6 +15,8 @@ namespace Database.Models
         public string PrimaryCity { get; set; }
         public string PrimaryState { get; set; }
         public int PrimaryZipcode { get; set; }
+
+        public bool IsSecondaryAddressSame { get; set; }
 
         public string SecondaryAddress1 { get; set; }
         public string SecondaryAddress2 { get; set; }

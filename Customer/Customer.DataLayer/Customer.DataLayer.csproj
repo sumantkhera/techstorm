@@ -48,8 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Classes\BaseRepository.cs" />
+    <Compile Include="Classes\Classification\ClassificationRepository.cs" />
+    <Compile Include="Classes\ClientType\ClientTypeRepository.cs" />
     <Compile Include="Classes\Customer\CustomerRepository.cs" />
+    <Compile Include="Interface\Classification\IClassificationRepository.cs" />
+    <Compile Include="Interface\ClientType\IClientTypeRepository.cs" />
     <Compile Include="Interface\Customer\ICustomerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,5 +71,6 @@
       <Name>Database</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

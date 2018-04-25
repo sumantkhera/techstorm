@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Customer.BusinessEntities.Customer;
+using AutoMapper;
+using Customer.BusinessEntities.ClientType;
+using Customer.BusinessLayer.Mapping;
 
 namespace Customer.BusinessLayer.Classes.Customer
 {
@@ -17,9 +20,20 @@ namespace Customer.BusinessLayer.Classes.Customer
             this._customerService = customerService;
         }
 
-        public IEnumerable<CustomerListViewModel> GetCustomerList()
+        public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
-            return _customerService.GetCustomerList();
+            return _customerService.GetCustomerList(customerSearchViewModel);
+        }
+
+        public object AddCustomer(CustomerDetailViewModel customer)
+        {
+            var obje = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customer);
+            throw new Exception("Duplicate Record.");
+        }
+
+        public object UpdateCustomer(CustomerDetailViewModel customer)
+        {
+            throw new NotImplementedException();
         }
     }
 }
