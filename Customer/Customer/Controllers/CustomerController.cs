@@ -3,6 +3,7 @@
     using Customer.BusinessEntities.Customer;
     using Customer.BusinessLayer.Interface.Customer;
     using System;
+    using System.Web;
     using System.Web.Http;
 
     [RoutePrefix("api/customer")]
@@ -25,6 +26,7 @@
         {
             try
             {
+                HttpContext.Current.Response.AppendHeader("Allow", "POST,OPTIONS");
                 var result = this._customerBL.GetCustomerList(customerfilter);
                 return Ok(result);
             }
