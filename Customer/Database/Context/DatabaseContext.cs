@@ -5,7 +5,8 @@ namespace Database.Context
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base("DefaultConnection") {
+        public DatabaseContext() : base("DefaultConnection")
+        {
 
         }
         public DbSet<Customer> Customers { get; set; }
@@ -17,8 +18,15 @@ namespace Database.Context
 
         public DbSet<User> Users { get; set; }
 
-        
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CustomerDetail>()
+                 .HasRequired(e => e.Customer)
+                .WithMany(d => d.CustomDetail)
+                .HasForeignKey(e => e.CustomerId);
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }

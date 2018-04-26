@@ -124,6 +124,14 @@
     <Compile Include="Migrations\201804260838450_Update_CustomerDetail.Designer.cs">
       <DependentUpon>201804260838450_Update_CustomerDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804261150222_Remove Key.cs" />
+    <Compile Include="Migrations\201804261150222_Remove Key.Designer.cs">
+      <DependentUpon>201804261150222_Remove Key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804261154466_Update key Client .cs" />
+    <Compile Include="Migrations\201804261154466_Update key Client .Designer.cs">
+      <DependentUpon>201804261154466_Update key Client .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Classification.cs" />
@@ -161,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804260838450_Update_CustomerDetail.resx">
       <DependentUpon>201804260838450_Update_CustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261150222_Remove Key.resx">
+      <DependentUpon>201804261150222_Remove Key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261154466_Update key Client .resx">
+      <DependentUpon>201804261154466_Update key Client .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

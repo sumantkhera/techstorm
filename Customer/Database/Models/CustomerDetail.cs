@@ -8,7 +8,9 @@ namespace Database.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+
+        public int CustomerId { get; set; }
+
         public Customer Customer { get; set; }
         public string PrimaryAddress1 { get; set; }
         public string PrimaryAddress2 { get; set; }
@@ -24,12 +26,12 @@ namespace Database.Models
         public string SecondaryState { get; set; }
         public int SecondaryZipcode { get; set; }
 
-		public string Phone { get; set; }
+        public string Phone { get; set; }
 
-		public string Email { get; set; }
+        public string Email { get; set; }
 
-		public string Eicode { get; set; }
+        public string Eicode { get; set; }
 
 
-	}
+    }
 }
