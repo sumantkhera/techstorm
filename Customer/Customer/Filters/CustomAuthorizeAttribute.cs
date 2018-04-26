@@ -27,7 +27,6 @@ namespace Customer.Filters
             {
                 body = content.Result;
                 var identity = FetchFromHeader(actionContext);
-                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity("test"), null);
 
                 //IRefreshTokenBL _refreshTokenBL = new RefreshTokenBL();
                 //if (!_refreshTokenBL.IsTokenExist(actionContext.Request.Headers.Authorization.Parameter))
@@ -35,8 +34,8 @@ namespace Customer.Filters
                 //    request = new { Description = "Unathorized Request", method = actionContext.Request.Method.ToString(), url = actionContext.Request.RequestUri, Header = actionContext.Request.Headers };
                 //    actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
                 //}
-                //var principal = actionContext.RequestContext.Principal as ClaimsPrincipal;
-                //Thread.CurrentPrincipal = new CustomIdentity(principal);
+                var principal = actionContext.RequestContext.Principal as ClaimsPrincipal;
+                Thread.CurrentPrincipal = new CustomIdentity(principal);
 
                 /***********Logging*******************************/
 

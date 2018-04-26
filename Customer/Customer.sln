@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.DataLayer", "Custo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAuthentication", "CustomerAuthentication\CustomerAuthentication.csproj", "{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Logging", "Customer.Logging\Customer.Logging.csproj", "{2A6D99C5-2953-4AE9-85CF-948865EC15A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A6D99C5-2953-4AE9-85CF-948865EC15A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A6D99C5-2953-4AE9-85CF-948865EC15A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A6D99C5-2953-4AE9-85CF-948865EC15A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A6D99C5-2953-4AE9-85CF-948865EC15A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

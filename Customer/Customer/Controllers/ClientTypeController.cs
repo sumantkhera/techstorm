@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace Customer.Controllers
 {
     [CustomAuthorizeAttribute]
-    public class ClientTypeController : ApiController
+    public class ClientTypeController : BaseController
     {
         #region Constructor
 

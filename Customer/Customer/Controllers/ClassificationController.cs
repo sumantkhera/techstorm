@@ -1,4 +1,6 @@
 ﻿using Customer.BusinessLayer.Interface.Classification;
+using Customer.Filters;
+using Customer.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,8 @@ using System.Web.Http;
 
 namespace Customer.Controllers
 {
-    public class ClassificationController : ApiController
+    [CustomAuthorizeAttribute]
+    public class ClassificationController : BaseController
     {
         #region Constructor
 
@@ -28,7 +31,9 @@ namespace Customer.Controllers
         {
             try
             {
+                //_lLogger.Start(LogLevel.INFO, null, () => "GetClassificationList");
                 var result = this._classificationBL.GetClassificationList();
+                //_lLogger.End();
                 return Ok(result);
             }
             catch (Exception ex)

@@ -2,12 +2,14 @@
 {
     using Customer.BusinessEntities.Customer;
     using Customer.BusinessLayer.Interface.Customer;
+    using Customer.Filters;
     using System;
     using System.Web;
     using System.Web.Http;
 
     [RoutePrefix("api/customer")]
-    public class CustomerController : ApiController
+    [CustomAuthorizeAttribute]
+    public class CustomerController : BaseController
     {
         #region Constructor
 

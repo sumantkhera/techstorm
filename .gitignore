@@ -14,3 +14,6 @@ Customer/Customer.DataLayer/obj/*
 Customer/Customer.BusinessEntities/bin/*
 Customer/CustomerAuthentication/bin/*
 Customer/CustomerAuthentication/obj/*
+Customer/Customer.Logging/obj/*
+Customer/Customer.Logging/bin/*
+Customer/Customer/Customer.csproj

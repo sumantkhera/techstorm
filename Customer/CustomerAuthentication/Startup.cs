@@ -1,30 +1,26 @@
-﻿using CustomerAuthentication.Providers;
+﻿using CustomerAuthentication.Format;
+using CustomerAuthentication.Providers;
+using Database.Context;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Collections.Generic;
+using System.Configuration;
+using System.IdentityModel.Tokens;
 using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
-using Microsoft.Owin.Security.DataHandler.Encoder;
-using Database.Context;
+using System.Threading.Tasks;
+using System.Web.Http;
+using Thinktecture.IdentityModel.Tokens;
 
 [assembly: OwinStartup(typeof(CustomerAuthentication.Startup))]
 namespace CustomerAuthentication
 {
     public class Startup
     {
-        //public void Configuration(IAppBuilder app)
-        //{
-        //	HttpConfiguration config = new HttpConfiguration();
-        //	WebApiConfig.Register(config);
-        //	app.UseWebApi(config);
-        //}
-
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
@@ -37,99 +33,39 @@ namespace CustomerAuthentication
 
         public void ConfigureOAuth(IAppBuilder app)
         {
-            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            string TokenExpireTime = ConfigurationManager.AppSettings["AccessTokenLifeSpanMinutes"] != null ? ConfigurationManager.AppSettings["AccessTokenLifeSpanMinutes"] : "30";
+            string Issuer = ConfigurationManager.AppSettings["Issuer"] != null ? ConfigurationManager.AppSettings["Issuer"] : "AAPRYL.Auth";
+            var oauthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                TokenEndpointPath = new PathString("/Login"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(int.Parse(TokenExpireTime)),
                 Provider = new SimpleAuthorizationServerProvider(),
+                AccessTokenFormat = new CustomJwtFormat(ConfigurationManager.AppSettings["Issuer"]),
                 RefreshTokenProvider = new RefreshTokenProvider()
             };
+            app.UseOAuthAuthorizationServer(oauthServerOptions);
 
-            // Token Generation
-            app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            /***********Code is used to authorized user while logout********************************/
+            var issuer = ConfigurationManager.AppSettings["Issuer"];
+            var audience = ConfigurationManager.AppSettings["Audience"];
+            var secret = Microsoft.Owin.Security.DataHandler.Encoder.TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["Secret"]);
 
-        }
-
-    }
-    public class RefreshTokenProvider : IAuthenticationTokenProvider
-    {
-        /// <summary>
-        /// Create refresh token entry in DB
-        /// </summary>
-        /// <param name="context">Authentication Token CreateContext </param>
-        /// <returns>Not returning any thing</returns>
-        public async Task CreateAsync(AuthenticationTokenCreateContext context)
-        {
-            var grant = context.Request.Headers["grant"];
-
-            if (string.IsNullOrEmpty(grant))
-            {
-                return;
-            }
-
-            var refreshTokenId = ApiKeyProvider.GenerateKey();
-            context.Ticket.Properties.Dictionary.Remove("jwtToken");
-            if (grant == "password")
-            {
-                var username = context.Request.Headers["username"];
-                using (var dbcontext = new DatabaseContext())
+            // Api controllers with an [Authorize] attribute will be validated with JWT
+            app.UseJwtBearerAuthentication(
+                new Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions
                 {
-                    var user = dbcontext.Users.Where(p => p.UserName == username).FirstOrDefault();
-
-                    if (user != null)
+                    AuthenticationMode = AuthenticationMode.Active,
+                    AllowedAudiences = new[] { audience },
+                    IssuerSecurityTokenProviders = new Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider[]
                     {
-                        user.Token = refreshTokenId;
-                        user.ModifyOn = DateTime.Now;
-                        await dbcontext.SaveChangesAsync();
+                        new Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider(issuer, secret)
                     }
-                }
-                context.SetToken(refreshTokenId);
-            }
+                });
         }
 
-        /// <summary>
-        /// ReceiveAsync: Called for refresh the token
-        /// </summary>
-        /// <param name="context">Token receive context</param>
-        /// <returns> Not returning any value</returns>
-        public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
-        {
-
-        }
-
-        /// <summary>
-        /// Create: Not implemented
-        /// </summary>
-        /// <param name="context">AuthenticationTokenCreateContext parameter</param>
-        public void Create(AuthenticationTokenCreateContext context)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Receive  Not implemented
-        /// </summary>
-        /// <param name="context">AuthenticationTokenReceiveContext parameter</param>
-        public void Receive(AuthenticationTokenReceiveContext context)
-        {
-            throw new NotImplementedException();
-        }
     }
-    public static class ApiKeyProvider
-    {
-        /// <summary>
-        /// GenerateKey: used to create a unique key
-        /// </summary>
-        /// <returns>return base64 encoded key</returns>
-        public static string GenerateKey()
-        {
-            var key = new byte[32];
-            RNGCryptoServiceProvider.Create().GetBytes(key);
-            var base64Secret = TextEncodings.Base64Url.Encode(key);
-
-            return base64Secret;
-        }
-    }
+    
+    
+    
 }
