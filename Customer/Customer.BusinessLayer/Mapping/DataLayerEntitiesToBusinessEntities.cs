@@ -28,9 +28,16 @@ namespace Customer.BusinessLayer.Mapping
                 .ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
                 .ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
                 .ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))
-                .ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))
+                .ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))                
                 .ForMember(dest => dest.Salutation, opts => opts.MapFrom(src => src.Salutation))
                 .ReverseMap();
+
+
+            CreateMap<CustomerDetailViewModel, Database.Models.CustomerDetail>()
+                //.ForMember(dest => dest.PrimaryAddress1, opts => opts.MapFrom(src => src.PrimaryAddress1))
+                //.ForMember(dest => dest.PrimaryAddress2, opts => opts.MapFrom(src => src.PrimaryAddress2))
+                .ReverseMap();
+
         }
         #endregion
 

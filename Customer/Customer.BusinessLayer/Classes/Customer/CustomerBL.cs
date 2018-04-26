@@ -25,9 +25,20 @@ namespace Customer.BusinessLayer.Classes.Customer
             return _customerService.GetCustomerList(customerSearchViewModel);
         }
 
-        public object AddCustomer(CustomerDetailViewModel customer)
+        /// <summary>
+        /// Save customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public object AddCustomer(CustomerDetailViewModel customerDetailView)
         {
-            var obje = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customer);
+            var customer = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customerDetailView);
+
+            var ustomerDetails = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerDetail>.Map(customerDetailView);
+
+            customer.CustomerDetails = ustomerDetails;
+
+            _customerService.Add(customer);
             return 1;
             //throw new Exception("Duplicate Record.");
         }
@@ -36,5 +47,9 @@ namespace Customer.BusinessLayer.Classes.Customer
         {
             return 1;
         }
+
+        #region PRIVATE
+        
+        #endregion
     }
 }

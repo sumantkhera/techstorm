@@ -11,6 +11,11 @@ namespace Customer.BusinessLayer.Interface.Customer
     {
         IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerfilter);
 
+        /// <summary>
+        /// Save customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         object AddCustomer(CustomerDetailViewModel customer);
 
         object UpdateCustomer(CustomerDetailViewModel customer);
