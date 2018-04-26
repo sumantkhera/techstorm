@@ -95,20 +95,20 @@ namespace Customer.DataLayer.Classes.Customer
 					var saveResult = databaseContext.SaveChanges();
 
 					var CustomerDetailResult = databaseContext.CustomerDetails.Where(w => w.Id == newCustomer.Id && w.IsDeleted == false).FirstOrDefault();
-					CustomerDetailResult.PrimaryAddress1 = newCustomer.CustomerDetails.PrimaryAddress1;
-					CustomerDetailResult.PrimaryAddress2 = newCustomer.CustomerDetails.PrimaryAddress2;
-					CustomerDetailResult.PrimaryCity = newCustomer.CustomerDetails.PrimaryCity;
-					CustomerDetailResult.PrimaryState = newCustomer.CustomerDetails.PrimaryState;
-					CustomerDetailResult.PrimaryZipcode = newCustomer.CustomerDetails.PrimaryZipcode;
-					CustomerDetailResult.SecondaryAddress1 = newCustomer.CustomerDetails.SecondaryAddress1;
-					CustomerDetailResult.SecondaryAddress2 = newCustomer.CustomerDetails.SecondaryAddress2;
-					CustomerDetailResult.SecondaryCity = newCustomer.CustomerDetails.SecondaryCity;
-					CustomerDetailResult.SecondaryState = newCustomer.CustomerDetails.SecondaryState;
-					CustomerDetailResult.SecondaryZipcode = newCustomer.CustomerDetails.SecondaryZipcode;
-					CustomerDetailResult.IsSecondaryAddressSame = newCustomer.CustomerDetails.IsSecondaryAddressSame;
-					CustomerDetailResult.Phone = newCustomer.CustomerDetails.Phone;
-					CustomerDetailResult.Email = newCustomer.CustomerDetails.Email;
-					CustomerDetailResult.Eicode = newCustomer.CustomerDetails.Eicode;
+					//CustomerDetailResult.PrimaryAddress1 = newCustomer.CustomerDetails.PrimaryAddress1;
+					//CustomerDetailResult.PrimaryAddress2 = newCustomer.CustomerDetails.PrimaryAddress2;
+					//CustomerDetailResult.PrimaryCity = newCustomer.CustomerDetails.PrimaryCity;
+					//CustomerDetailResult.PrimaryState = newCustomer.CustomerDetails.PrimaryState;
+					//CustomerDetailResult.PrimaryZipcode = newCustomer.CustomerDetails.PrimaryZipcode;
+					//CustomerDetailResult.SecondaryAddress1 = newCustomer.CustomerDetails.SecondaryAddress1;
+					//CustomerDetailResult.SecondaryAddress2 = newCustomer.CustomerDetails.SecondaryAddress2;
+					//CustomerDetailResult.SecondaryCity = newCustomer.CustomerDetails.SecondaryCity;
+					//CustomerDetailResult.SecondaryState = newCustomer.CustomerDetails.SecondaryState;
+					//CustomerDetailResult.SecondaryZipcode = newCustomer.CustomerDetails.SecondaryZipcode;
+					//CustomerDetailResult.IsSecondaryAddressSame = newCustomer.CustomerDetails.IsSecondaryAddressSame;
+					//CustomerDetailResult.Phone = newCustomer.CustomerDetails.Phone;
+					//CustomerDetailResult.Email = newCustomer.CustomerDetails.Email;
+					//CustomerDetailResult.Eicode = newCustomer.CustomerDetails.Eicode;
 
 					var saveCustomerDetailResult = databaseContext.SaveChanges();
 

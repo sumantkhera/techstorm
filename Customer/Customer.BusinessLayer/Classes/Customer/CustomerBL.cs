@@ -39,7 +39,7 @@ namespace Customer.BusinessLayer.Classes.Customer
 		{
 			var customer = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customerDetailView);
 			var ustomerDetails = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerDetail>.Map(customerDetailView);
-			customer.CustomerDetails = ustomerDetails;
+			//customer.CustomerDetails = ustomerDetails;
 			_customerService.Add(customer);
 
 			return 1;
@@ -54,7 +54,7 @@ namespace Customer.BusinessLayer.Classes.Customer
 		{
 			var customer = AutoMapperHelper<CustomerDetailViewModel, Database.Models.Customer>.Map(customerDetailView);
 			var ustomerDetails = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerDetail>.Map(customerDetailView);
-			customer.CustomerDetails = ustomerDetails;
+			//customer.CustomerDetails = ustomerDetails;
 			_customerService.UpdateCustomer(customer);
 
 			return 1;
