@@ -18,5 +18,13 @@ namespace Customer.DataLayer.Interface.Customer
         /// <param name="customer"></param>
         /// <returns></returns>
         DataModel.Customer Add(DataModel.Customer customer);
-    }
+
+		/// <summary>
+		/// Update customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		DataModel.Customer UpdateCustomer(DataModel.Customer customer);
+
+	}
 }

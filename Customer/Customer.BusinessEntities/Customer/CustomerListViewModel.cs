@@ -25,5 +25,11 @@ namespace Customer.BusinessEntities.Customer
 
         public string Status { get; set; }
 
-    }
+		public string Phone { get; set; }
+
+		public string Email { get; set; }
+
+		public string Eicode { get; set; }
+
+	}
 }

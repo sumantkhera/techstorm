@@ -25,7 +25,6 @@ namespace Database.Models
         [Required]
         public string PrimaryContact { get; set; }
 
-
-        public CustomerDetail CustomerDetails { get; set; }
+		public CustomerDetail CustomerDetails { get; set; }
     }
 }

@@ -24,6 +24,12 @@ namespace Database.Models
         public string SecondaryState { get; set; }
         public int SecondaryZipcode { get; set; }
 
+		public string Phone { get; set; }
 
-    }
+		public string Email { get; set; }
+
+		public string Eicode { get; set; }
+
+
+	}
 }
