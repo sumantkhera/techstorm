@@ -10,7 +10,12 @@ namespace Customer.DataLayer.Interface.Customer
 {
     public interface ICustomerRepository
     {
-        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel);
+		/// <summary>
+		/// Get customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel);
 
         /// <summary>
         /// Save customer Information

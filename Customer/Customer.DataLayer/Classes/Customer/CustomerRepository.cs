@@ -68,7 +68,7 @@ namespace Customer.DataLayer.Classes.Customer
 
 		#region UPDATE
 		/// <summary>
-		/// Save customer Information
+		/// Update customer Information
 		/// </summary>
 		/// <param name="customer"></param>
 		/// <returns></returns>

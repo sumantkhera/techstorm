@@ -9,6 +9,11 @@ namespace Customer.BusinessLayer.Interface.ClientType
 {
     public interface IClientTypeBL
     {
-        IEnumerable<ClientTypeViewModel> GetClientTypeList();
+		/// <summary>
+		///  Get ClientType  Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		IEnumerable<ClientTypeViewModel> GetClientTypeList();
     }
 }

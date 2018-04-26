@@ -17,11 +17,16 @@
             this._customerBL = customerBL;
         }
 
-        #endregion
+		#endregion
 
-        #region Get
+		#region Get
+		/// <summary>
+		/// Get customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
 
-        [HttpPost, Route("GetCustomerList")]
+		[HttpPost, Route("GetCustomerList")]
         public IHttpActionResult GetCustomerList(CustomerSearchViewModel customerfilter)
         {
             try
@@ -37,20 +42,30 @@
             }
         }
 
-        #endregion
+		#endregion
 
-        #region Post
-        [HttpPost, Route("AddCustomer")]
+		#region Post
+		/// <summary>
+		/// Save customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		[HttpPost, Route("AddCustomer")]
         public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
         {
             var result = this._customerBL.AddCustomer(customer);
             return Ok(result);
         }
 
-        #endregion
+		#endregion
 
-        #region Put
-        [HttpPut, Route("UpdateCustomer")]
+		#region Put
+		/// <summary>
+		/// Update customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		[HttpPut, Route("UpdateCustomer")]
         public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
         {
             try
