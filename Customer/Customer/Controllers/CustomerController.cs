@@ -8,7 +8,7 @@
     using System.Web.Http;
 
     [RoutePrefix("api/customer")]
-    [CustomAuthorizeAttribute]
+    //[CustomAuthorizeAttribute]
     public class CustomerController : BaseController
     {
         #region Constructor

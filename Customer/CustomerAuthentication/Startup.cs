@@ -23,12 +23,12 @@ namespace CustomerAuthentication
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             HttpConfiguration config = new HttpConfiguration();
             ConfigureOAuth(app);
             //Rest of code is here;
             WebApiConfig.Register(config);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            //app.UseWebApi(config);
+            app.UseWebApi(config);
         }
 
         public void ConfigureOAuth(IAppBuilder app)

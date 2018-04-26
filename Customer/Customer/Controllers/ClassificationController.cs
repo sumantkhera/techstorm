@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Customer.Controllers
 {
-    [CustomAuthorizeAttribute]
+    //[CustomAuthorizeAttribute]
     public class ClassificationController : BaseController
     {
         #region Constructor

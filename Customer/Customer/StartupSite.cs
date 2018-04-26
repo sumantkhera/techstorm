@@ -6,10 +6,10 @@ using Owin;
 using System.Configuration;
 using System.Web.Http;
 
-[assembly: OwinStartup(typeof(Customer.Startup))]
+[assembly: OwinStartup(typeof(Customer.StartupSite))]
 namespace Customer
 {
-    public class Startup
+    public class StartupSite
     {
         public void Configuration(IAppBuilder app)
         {
