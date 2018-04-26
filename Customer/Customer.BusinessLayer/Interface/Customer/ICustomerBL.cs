@@ -9,7 +9,12 @@ namespace Customer.BusinessLayer.Interface.Customer
 {
     public interface ICustomerBL
     {
-        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerfilter);
+		/// <summary>
+		/// Get customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerfilter);
 
         /// <summary>
         /// Save customer Information
@@ -18,6 +23,11 @@ namespace Customer.BusinessLayer.Interface.Customer
         /// <returns></returns>
         object AddCustomer(CustomerDetailViewModel customer);
 
-        object UpdateCustomer(CustomerDetailViewModel customer);
+		/// <summary>
+		/// Update customer Information
+		/// </summary>
+		/// <param name="customer"></param>
+		/// <returns></returns>
+		object UpdateCustomer(CustomerDetailViewModel customer);
     }
 }
