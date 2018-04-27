@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Customer.Controllers
 {
-    //[CustomAuthorizeAttribute]
+    [CustomAuthorizeAttribute]
     public class ClientTypeController : BaseController
     {
         #region Constructor
