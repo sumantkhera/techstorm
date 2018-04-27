@@ -17,3 +17,5 @@ Customer/CustomerAuthentication/obj/*
 Customer/Customer.Logging/obj/*
 Customer/Customer.Logging/bin/*
 Customer/Customer/Customer.csproj
+*.ide-shm
+*.ide-wal
