@@ -19,16 +19,16 @@
             this._customerBL = customerBL;
         }
 
-		#endregion
+        #endregion
 
-		#region Get
-		/// <summary>
-		/// Get customer Information
-		/// </summary>
-		/// <param name="customer"></param>
-		/// <returns></returns>
+        #region Get
+        /// <summary>
+        /// Get customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
 
-		[HttpPost, Route("GetCustomerList")]
+        [HttpPost, Route("GetCustomerList")]
         public IHttpActionResult GetCustomerList(CustomerSearchViewModel customerfilter)
         {
             try
@@ -44,35 +44,35 @@
             }
         }
 
-		#endregion
+        #endregion
 
-		#region Post
-		/// <summary>
-		/// Save customer Information
-		/// </summary>
-		/// <param name="customer"></param>
-		/// <returns></returns>
-		[HttpPost, Route("AddCustomer")]
+        #region Post
+        /// <summary>
+        /// Save customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [HttpPost, Route("AddCustomer")]
         public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
         {
-            var result = this._customerBL.AddCustomer(customer);
+            var result = this._customerBL.AddCustomer(customer, UserId);
             return Ok(result);
         }
 
-		#endregion
+        #endregion
 
-		#region Put
-		/// <summary>
-		/// Update customer Information
-		/// </summary>
-		/// <param name="customer"></param>
-		/// <returns></returns>
-		[HttpPut, Route("UpdateCustomer")]
+        #region Put
+        /// <summary>
+        /// Update customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [HttpPut, Route("UpdateCustomer")]
         public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
         {
             try
             {
-                var result = this._customerBL.UpdateCustomer(customer);
+                var result = this._customerBL.UpdateCustomer(customer, UserId);
                 return Ok(result);
             }
             catch (Exception ex)

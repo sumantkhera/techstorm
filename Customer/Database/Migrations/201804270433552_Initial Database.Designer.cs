@@ -7,13 +7,13 @@ namespace Database.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdatekeyClient : IMigrationMetadata
+    public sealed partial class InitialDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatekeyClient));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804261154466_Update key Client "; }
+            get { return "201804270433552_Initial Database"; }
         }
         
         string IMigrationMetadata.Source

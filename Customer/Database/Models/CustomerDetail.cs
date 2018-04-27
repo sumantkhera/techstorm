@@ -6,6 +6,7 @@ namespace Database.Models
     public class CustomerDetail : BaseModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public int? CustomerId { get; set; }
@@ -41,6 +42,8 @@ namespace Database.Models
         public string Email { get; set; }
 
         public string Eicode { get; set; }
+
+        public string Eicode2 { get; set; }
 
 
     }

@@ -56,6 +56,7 @@
     <Compile Include="Classes\Classification\ClassificationRepository.cs" />
     <Compile Include="Classes\ClientType\ClientTypeRepository.cs" />
     <Compile Include="Classes\Customer\CustomerRepository.cs" />
+    <Compile Include="Classes\Enum\Enum.cs" />
     <Compile Include="Interface\Classification\IClassificationRepository.cs" />
     <Compile Include="Interface\ClientType\IClientTypeRepository.cs" />
     <Compile Include="Interface\Customer\ICustomerRepository.cs" />
