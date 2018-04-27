@@ -40,7 +40,7 @@ namespace Customer.Controllers
         {
             try
             {
-				Logger.Info("customer execution;");
+				
 				var result = this._clientTypeBL.GetClientTypeList();
                 return Ok(result);
             }
