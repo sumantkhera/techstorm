@@ -22,20 +22,32 @@ namespace Customer.BusinessLayer.Mapping
 
         private void ConfigMap()
         {
-            //CreateMap<Data.Domain.Benchmark, APPRYL.BusinessEntities.Common.Benchmark>().ReverseMap();
-
             CreateMap<CustomerDetailViewModel, Database.Models.Customer>()
-                //.ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
-                //.ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
-                //.ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))
-                //.ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))                
-                //.ForMember(dest => dest.Salutation, opts => opts.MapFrom(src => src.Salutation))
+               .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
                 .ReverseMap();
 
 
             CreateMap<CustomerDetailViewModel, Database.Models.CustomerDetail>()
-                //.ForMember(dest => dest.PrimaryAddress1, opts => opts.MapFrom(src => src.PrimaryAddress1))
-                //.ForMember(dest => dest.PrimaryAddress2, opts => opts.MapFrom(src => src.PrimaryAddress2))
+                .ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
+                .ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
+                .ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))
+                .ForMember(dest => dest.Eicode, opts => opts.MapFrom(src => src.Eicode))
+                .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
+                .ForMember(dest => dest.IsSecondaryAddressSame, opts => opts.MapFrom(src => src.IsSecondaryAddressSame))
+                .ForMember(dest => dest.Phone, opts => opts.MapFrom(src => src.Phone))
+                .ForMember(dest => dest.PrimaryAddress1, opts => opts.MapFrom(src => src.PrimaryAddress1))
+                .ForMember(dest => dest.PrimaryAddress2, opts => opts.MapFrom(src => src.PrimaryAddress2))
+                .ForMember(dest => dest.PrimaryCity, opts => opts.MapFrom(src => src.PrimaryCity))
+                .ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))
+                .ForMember(dest => dest.PrimaryState, opts => opts.MapFrom(src => src.PrimaryState))
+                .ForMember(dest => dest.PrimaryZipcode, opts => opts.MapFrom(src => src.PrimaryZipcode))
+                .ForMember(dest => dest.Salutation, opts => opts.MapFrom(src => src.Salutation))
+                .ForMember(dest => dest.SecondaryAddress1, opts => opts.MapFrom(src => src.SecondaryAddress1))
+                .ForMember(dest => dest.SecondaryAddress2, opts => opts.MapFrom(src => src.SecondaryAddress2))
+                .ForMember(dest => dest.SecondaryCity, opts => opts.MapFrom(src => src.SecondaryCity))
+                .ForMember(dest => dest.SecondaryState, opts => opts.MapFrom(src => src.SecondaryState))
+                .ForMember(dest => dest.SecondaryZipcode, opts => opts.MapFrom(src => src.SecondaryZipcode))
                 .ReverseMap();
 
         }

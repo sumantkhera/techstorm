@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Customer.BusinessEntities.Common;
+using Customer.DataLayer.Classes.Enum;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -19,6 +21,21 @@ namespace Customer.DataLayer.Classes
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        protected AddUpdateResultViewModel CreateSuccessStatus(int id)
+        {
+            AddUpdateResultViewModel addUpdateResultViewModel = new AddUpdateResultViewModel();
+            addUpdateResultViewModel.Id = id.ToString();
+            return addUpdateResultViewModel;
+        }
+
+
+        protected AddUpdateResultViewModel CreateFailureNotFoundStatus()
+        {
+            AddUpdateResultViewModel addUpdateResultViewModel = new AddUpdateResultViewModel();
+            addUpdateResultViewModel.Message = ReponseStatus.RecordNotFound.ToString();
+            return addUpdateResultViewModel;
         }
     }
 }

@@ -16,5 +16,14 @@ namespace Customer.Controllers
             _lLogger = Log4NetLogger.Instance;
         }
 
+        public int UserId
+        {
+            get
+            {
+                int userId = 0;
+                int.TryParse(User.Identity.Name, out userId);
+                return userId;
+            }
+        }
     }
 }

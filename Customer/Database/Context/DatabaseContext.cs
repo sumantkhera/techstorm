@@ -1,5 +1,8 @@
 ﻿using Database.Models;
+using System;
 using System.Data.Entity;
+using System.Linq;
+using System.Security.Principal;
 
 namespace Database.Context
 {
@@ -26,6 +29,26 @@ namespace Database.Context
                 .WithMany(d => d.CustomDetail)
                 .HasForeignKey(e => e.CustomerId);
             base.OnModelCreating(modelBuilder);
+        }
+
+        public int SaveChanges(int userId)
+        {
+            var selectedEntityList = ChangeTracker.Entries()
+                                    .Where(x => x.Entity is BaseModel &&
+                                    (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            foreach (var entity in selectedEntityList)
+            {
+                if (entity.State == EntityState.Added)
+                {
+                    ((BaseModel)entity.Entity).CreatedOn = DateTime.Now;
+                    ((BaseModel)entity.Entity).CreatedBy = userId;
+                    ((BaseModel)entity.Entity).Version++;
+                }
+                ((BaseModel)entity.Entity).ModifyOn = DateTime.Now;
+                ((BaseModel)entity.Entity).ModifyBy = userId;
+            }
+            return base.SaveChanges();
         }
 
     }

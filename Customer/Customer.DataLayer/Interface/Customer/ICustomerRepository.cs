@@ -1,4 +1,5 @@
-﻿using Customer.BusinessEntities.Customer;
+﻿using Customer.BusinessEntities.Common;
+using Customer.BusinessEntities.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,14 @@ namespace Customer.DataLayer.Interface.Customer
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        DataModel.Customer Add(DataModel.Customer customer);
+        AddUpdateResultViewModel Add(DataModel.Customer customer, int userId);
 
-		/// <summary>
-		/// Update customer Information
-		/// </summary>
-		/// <param name="customer"></param>
-		/// <returns></returns>
-		DataModel.Customer UpdateCustomer(DataModel.Customer customer);
+        /// <summary>
+        /// Update customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        AddUpdateResultViewModel UpdateCustomer(DataModel.Customer customer, int userId);
 
 	}
 }
