@@ -19,3 +19,5 @@ Customer/Customer.Logging/bin/*
 Customer/Customer/Customer.csproj
 *.ide-shm
 *.ide-wal
+Customer/Customer.Utility/bin/*
+Customer/Customer.Utility/obj/*
