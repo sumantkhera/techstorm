@@ -26,7 +26,7 @@ namespace Customer.DataLayer.Classes.Customer
 							 on customer.Id equals cd.Id
 							 select (new CustomerListViewModel
 							 {
-								 BusinessName = customer.BusinessName,
+								 //BusinessName = customer.BusinessName,
 								 Id = customer.Id,
 								 Phone = cd.Phone,
 								 Email = cd.Email ,
@@ -86,10 +86,10 @@ namespace Customer.DataLayer.Classes.Customer
 					if (CustomerResult == null)
 						return null;
 
-					CustomerResult.ClassificationId = newCustomer.ClassificationId;
-					CustomerResult.BusinessName = newCustomer.BusinessName;
-					CustomerResult.Salutation = newCustomer.Salutation;
-					CustomerResult.PrimaryContact = newCustomer.PrimaryContact;
+					//CustomerResult.ClassificationId = newCustomer.ClassificationId;
+					//CustomerResult.BusinessName = newCustomer.BusinessName;
+					//CustomerResult.Salutation = newCustomer.Salutation;
+					//CustomerResult.PrimaryContact = newCustomer.PrimaryContact;
 					
 
 					var saveResult = databaseContext.SaveChanges();

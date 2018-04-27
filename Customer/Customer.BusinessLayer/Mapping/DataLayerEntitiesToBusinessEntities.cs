@@ -25,11 +25,11 @@ namespace Customer.BusinessLayer.Mapping
             //CreateMap<Data.Domain.Benchmark, APPRYL.BusinessEntities.Common.Benchmark>().ReverseMap();
 
             CreateMap<CustomerDetailViewModel, Database.Models.Customer>()
-                .ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
-                .ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
-                .ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))
-                .ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))                
-                .ForMember(dest => dest.Salutation, opts => opts.MapFrom(src => src.Salutation))
+                //.ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
+                //.ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
+                //.ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))
+                //.ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))                
+                //.ForMember(dest => dest.Salutation, opts => opts.MapFrom(src => src.Salutation))
                 .ReverseMap();
 
 
