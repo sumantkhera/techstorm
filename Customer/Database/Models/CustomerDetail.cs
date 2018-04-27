@@ -8,10 +8,20 @@ namespace Database.Models
         [Key]
         public int Id { get; set; }
 
-
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
 
         public Customer Customer { get; set; }
+
+        public int? ClientTypeId { get; set; }
+
+        public int? ClassificationId { get; set; }
+
+        public string BusinessName { get; set; }
+
+        public string Salutation { get; set; }
+
+        public string PrimaryContact { get; set; }
+
         public string PrimaryAddress1 { get; set; }
         public string PrimaryAddress2 { get; set; }
         public string PrimaryCity { get; set; }

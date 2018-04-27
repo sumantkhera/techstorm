@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201804261154466_Update key Client .Designer.cs">
       <DependentUpon>201804261154466_Update key Client .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804270318404_Correct Format Customer.cs" />
+    <Compile Include="Migrations\201804270318404_Correct Format Customer.Designer.cs">
+      <DependentUpon>201804270318404_Correct Format Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Classification.cs" />
@@ -175,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804261154466_Update key Client .resx">
       <DependentUpon>201804261154466_Update key Client .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804270318404_Correct Format Customer.resx">
+      <DependentUpon>201804270318404_Correct Format Customer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
