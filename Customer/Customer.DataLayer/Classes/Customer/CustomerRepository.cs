@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Customer.BusinessEntities.Customer;
 using Database.Context;
 using DataModel = Database.Models;
+using System.Data.Entity;
 
 namespace Customer.DataLayer.Classes.Customer
 {
@@ -22,17 +23,85 @@ namespace Customer.DataLayer.Classes.Customer
 		{
 			using (var databaseContext = new DatabaseContext())
 			{
-				var result = from customer in databaseContext.Customers join cd in  databaseContext.CustomerDetails
-							 on customer.Id equals cd.Id
-							 select (new CustomerListViewModel
-							 {
-								 //BusinessName = customer.BusinessName,
-								 Id = customer.Id,
-								 Phone = cd.Phone,
-								 Email = cd.Email ,
-								 Eicode = cd.Eicode ,
-							 });
-				return result.ToList();
+                //paging parameter
+                var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
+
+                //Get the basic data
+                var resultQuery = databaseContext.CustomerDetails.Where(w => !w.IsDeleted && !w.Customer.IsDeleted)
+                    .Select(s => new CustomerListViewModel
+                    {
+                        BusinessName = s.BusinessName,
+                        Eicode = s.Eicode,
+                        Email = s.Email,
+                        Phone = s.Phone,
+                        PrimaryAddress1 = s.PrimaryAddress1,
+                        PrimaryAddress2 = s.PrimaryAddress2,
+                        PrimaryCity = s.PrimaryCity,
+                        PrimaryState = s.PrimaryState,
+                        PrimaryZipcode = s.PrimaryZipcode,
+                        ModifyOn = s.ModifyOn
+
+                    });
+                    
+                //Apply filter criteria
+                if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
+                {
+                    resultQuery = resultQuery.Where(w => w.BusinessName == customerSearchViewModel.CustomerName);
+                }
+
+                if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
+                {
+                    resultQuery = resultQuery.Where(w => w.Email == customerSearchViewModel.Email);
+                }
+
+                if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))
+                {
+                    resultQuery = resultQuery.Where(w => w.Phone == customerSearchViewModel.Phone);
+                }
+
+                if (customerSearchViewModel.DateAddedFrom != null)
+                {
+                    resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
+                }
+
+                if (customerSearchViewModel.DateAddedFrom != null)
+                {
+                    resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
+                }
+
+                if (customerSearchViewModel.DateAddedTo != null)
+                {
+                    resultQuery = resultQuery.Where(w => w.ModifyOn <= customerSearchViewModel.DateAddedTo);
+                }
+
+                //Apply Sorting
+                if (customerSearchViewModel.SortOrder == "desc")
+                {
+                    switch (customerSearchViewModel.SortColumn)
+                    {
+                        case "name":
+                            resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
+                            break;
+
+                        case "date":
+                            resultQuery = resultQuery.OrderByDescending(o => o.ModifyOn);
+                            break;
+                    }
+                }
+                else
+                    switch (customerSearchViewModel.SortColumn)
+                    {
+                        case "name":
+                            resultQuery = resultQuery.OrderBy(o => o.BusinessName);
+                            break;
+
+                        case "date":
+                            resultQuery = resultQuery.OrderBy(o => o.ModifyOn);
+                            break;
+                    }
+
+                //Apply Paging return result
+                return resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
 			}
 		}
 		#endregion

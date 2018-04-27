@@ -30,6 +30,11 @@ namespace Customer.BusinessEntities.Customer
 		public string Email { get; set; }
 
 		public string Eicode { get; set; }
-
-	}
+        public string PrimaryAddress1 { get; set; }
+        public string PrimaryAddress2 { get; set; }
+        public string PrimaryCity { get; set; }
+        public string PrimaryState { get; set; }
+        public int PrimaryZipcode { get; set; }
+        public DateTime? ModifyOn { get; set; }
+    }
 }
