@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ILogger.cs" />
     <Compile Include="Log4NetLogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="LoggerInstance.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="LogManager.cs" />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Customer.Logging;
 
 namespace Customer.Controllers
 {
@@ -18,8 +19,16 @@ namespace Customer.Controllers
         private readonly IClientTypeBL _clientTypeBL;
         public ClientTypeController(IClientTypeBL clientTypeBL)
         {
-            this._clientTypeBL = clientTypeBL;
-        }
+			try
+			{
+				this._clientTypeBL = clientTypeBL;
+			}
+			catch (Exception ex)
+			{
+				Logger.Error(ex);
+				throw;
+			}
+		}
 
         #endregion
 
@@ -31,14 +40,17 @@ namespace Customer.Controllers
         {
             try
             {
-                var result = this._clientTypeBL.GetClientTypeList();
+				Logger.Info("customer execution;");
+				var result = this._clientTypeBL.GetClientTypeList();
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
-            }
+				//If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+				// return InternalServerError();
+				Logger.Error(ex);
+				throw;
+			}
         }
 
         #endregion

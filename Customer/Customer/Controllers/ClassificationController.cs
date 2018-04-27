@@ -18,8 +18,16 @@ namespace Customer.Controllers
         private readonly IClassificationBL _classificationBL;
         public ClassificationController(IClassificationBL classificationBL)
         {
-            this._classificationBL = classificationBL;
-        }
+			try
+			{
+				this._classificationBL = classificationBL;
+			}
+			catch (Exception ex)
+			{
+				Logger.Error(ex);
+				throw;
+			}
+		}
 
         #endregion
 
@@ -38,9 +46,11 @@ namespace Customer.Controllers
             }
             catch (Exception ex)
             {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
-            }
+				//If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+				//return InternalServerError();
+				Logger.Error(ex);
+				throw;
+			}
         }
 
         #endregion
