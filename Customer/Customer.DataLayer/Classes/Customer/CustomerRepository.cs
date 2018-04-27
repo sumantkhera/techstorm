@@ -12,6 +12,15 @@ namespace Customer.DataLayer.Classes.Customer
 {
     public class CustomerRepository : BaseRepository, ICustomerRepository
     {
+        DatabaseContext _databaseContext;
+
+        #region CONSTRUCTOR
+        public CustomerRepository()
+        {
+            _databaseContext = new DatabaseContext();
+        }
+        #endregion
+
         #region GET
         /// <summary>
         /// Get customer Information
@@ -20,13 +29,14 @@ namespace Customer.DataLayer.Classes.Customer
         /// <returns></returns>
         public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
-            using (var databaseContext = new DatabaseContext())
-            {
+            //using (var databaseContext = new DatabaseContext())
+            //{
+                
                 //paging parameter
                 var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
 
                 //Get the basic data
-                var resultQuery = databaseContext.CustomerDetails.Where(w => !w.IsDeleted && !w.Customer.IsDeleted)
+                var resultQuery = _databaseContext.CustomerDetails.Where(w => !w.IsDeleted && !w.Customer.IsDeleted)
                     .Select(s => new CustomerListViewModel
                     {
                         BusinessName = s.BusinessName,
@@ -101,7 +111,7 @@ namespace Customer.DataLayer.Classes.Customer
 
                 //Apply Paging return result
                 return resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
-            }
+            //}
         }
         #endregion
 
