@@ -8,9 +8,9 @@ namespace Customer.BusinessEntities.Common
 {
     public class FilterBaseClass
     {
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public int SortOrder { get; set; }
-        public int SortCOlumn { get; set; }
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
+        public string SortOrder { get; set; } = "desc";
+        public string SortColumn { get; set; } = "name";
     }
 }
