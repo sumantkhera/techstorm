@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using aa = Customer.Utility;
 
 namespace Customer.BusinessEntities.Customer
 {
     public class CustomerDetailViewModel
     {
-
         public int Id { get; set; }
 
+        [Required(ErrorMessageResourceType =  (typeof(aa.Properties.Error)), ErrorMessageResourceName = "ClientType")]
         public int ClientTypeId { get; set; }
 
         public int ClassificationId { get; set; }
+
+        [Required, StringLength(500, MinimumLength = 1, ErrorMessageResourceType = (typeof(aa.Properties.Error)), ErrorMessageResourceName = "BusinessName")]
 
         public string BusinessName { get; set; }
 
@@ -37,8 +41,9 @@ namespace Customer.BusinessEntities.Customer
 
 		public string Phone { get; set; }
 
-		public string Email { get; set; }
-
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        public string Email { get; set; }
+        
 		public string Eicode { get; set; }
 
 	}
