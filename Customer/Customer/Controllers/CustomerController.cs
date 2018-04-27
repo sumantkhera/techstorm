@@ -33,7 +33,6 @@
         {
             try
             {
-                HttpContext.Current.Response.AppendHeader("Allow", "POST,OPTIONS");
                 var result = this._customerBL.GetCustomerList(customerfilter);
                 return Ok(result);
             }
@@ -67,7 +66,7 @@
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        [HttpPut, Route("UpdateCustomer")]
+        [HttpPost, Route("UpdateCustomer")]
         public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
         {
             try

@@ -45,6 +45,8 @@ namespace Database.Context
                     ((BaseModel)entity.Entity).CreatedBy = userId;
                     ((BaseModel)entity.Entity).Version++;
                 }
+                if (!((BaseModel)entity.Entity).Version.HasValue)
+                    ((BaseModel)entity.Entity).Version = 1;
                 ((BaseModel)entity.Entity).ModifyOn = DateTime.Now;
                 ((BaseModel)entity.Entity).ModifyBy = userId;
             }

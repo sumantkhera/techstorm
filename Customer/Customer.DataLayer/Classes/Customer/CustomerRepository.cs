@@ -153,7 +153,7 @@ namespace Customer.DataLayer.Classes.Customer
 
                 using (var databaseContext = new DatabaseContext())
                 {
-                    var customerResult = databaseContext.CustomerDetails.Where(w => w.Id == newCustomer.Id && w.IsDeleted == false).FirstOrDefault();
+                    var customerResult = databaseContext.CustomerDetails.Where(w => w.CustomerId == newCustomer.Id && w.IsDeleted == false).FirstOrDefault();
 
                     if (customerResult == null)
                         return CreateFailureNotFoundStatus();
