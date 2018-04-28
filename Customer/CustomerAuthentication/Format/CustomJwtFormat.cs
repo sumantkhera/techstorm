@@ -2,15 +2,16 @@
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens;
 using System.Linq;
-using System.Web;
 using Thinktecture.IdentityModel.Tokens;
 
 namespace CustomerAuthentication.Format
 {
+    /// <summary>
+    /// Customer jwt format class.
+    /// </summary>
     public class CustomJwtFormat : ISecureDataFormat<AuthenticationTicket>
     {
         private readonly string _issuer;
@@ -20,6 +21,11 @@ namespace CustomerAuthentication.Format
             _issuer = issuer;
         }
 
+        /// <summary>
+        /// Implement the secure data
+        /// </summary>
+        /// <param name="data">Ticket detail.</param>
+        /// <returns>Jwt token</returns>
         public string Protect(AuthenticationTicket data)
         {
             if (data == null)

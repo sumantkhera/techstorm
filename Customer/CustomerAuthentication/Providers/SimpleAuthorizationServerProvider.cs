@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security.OAuth;
-using Database.Context;
-using System.IO;
-using System.Configuration;
+﻿using Database.Context;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace CustomerAuthentication.Providers
 {
