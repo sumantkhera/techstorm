@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utility = Customer.Utility;
 
 namespace Customer.BusinessEntities.Customer
 {
@@ -26,6 +21,8 @@ namespace Customer.BusinessEntities.Customer
 
         public string Salutation { get; set; }
 
+        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
+        [RegularExpression("^[0-9]{10}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
         public string PrimaryContact { get; set; }
 
         public string PrimaryAddress1 { get; set; }
@@ -42,7 +39,9 @@ namespace Customer.BusinessEntities.Customer
         public string SecondaryState { get; set; }
         public int SecondaryZipcode { get; set; }
 
-		public string Phone { get; set; }
+        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Phone")]
+        [RegularExpression("^[0-9]{10}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Phone")]
+        public string Phone { get; set; }
 
         [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]

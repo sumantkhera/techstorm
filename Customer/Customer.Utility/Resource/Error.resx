@@ -129,4 +129,10 @@
   <data name="Email" xml:space="preserve">
     <value>Enter a valid email id.</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Geben Sie eine 10-stellige Telefonnummer ein.</value>
+  </data>
+  <data name="PrimaryContact" xml:space="preserve">
+    <value>Geben Sie die 10-stellige primäre Kontaktnummer ein.</value>
+  </data>
 </root>

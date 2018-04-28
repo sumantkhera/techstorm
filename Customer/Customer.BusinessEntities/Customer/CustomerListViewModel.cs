@@ -19,7 +19,7 @@ namespace Customer.BusinessEntities.Customer
 
         public string CreatedBy { get; set; }
 
-        public DateTime ModifyDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
 
         public string ModifyBy { get; set; }
 

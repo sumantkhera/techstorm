@@ -46,7 +46,7 @@ namespace Customer.DataLayer.Classes.Customer
                                   PrimaryState = customer.PrimaryState,
                                   PrimaryZipcode = customer.PrimaryZipcode,
                                   ModifyOn = customer.ModifyOn,
-                                  CreatedDate = customer.CreatedOn.Value,
+                                  CreatedDate = customer.Customer.CreatedOn.Value,
                                   ModifyBy = userm.UserName,
                                   CreatedBy = user.UserName,
                                   PrimaryContact = customer.PrimaryContact,
@@ -57,6 +57,7 @@ namespace Customer.DataLayer.Classes.Customer
                                   SecondaryCity = customer.SecondaryCity,
                                   SecondaryState = customer.SecondaryState,
                                   SecondaryZipcode = customer.SecondaryZipcode,
+                                  ModifyDate = customer.ModifyOn,
                               };
 
             //Apply filter criteria
@@ -77,17 +78,12 @@ namespace Customer.DataLayer.Classes.Customer
 
             if (customerSearchViewModel.DateAddedFrom != null)
             {
-                resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
-            }
-
-            if (customerSearchViewModel.DateAddedFrom != null)
-            {
-                resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
+                resultQuery = resultQuery.Where(w => w.CreatedDate >= customerSearchViewModel.DateAddedFrom);
             }
 
             if (customerSearchViewModel.DateAddedTo != null)
             {
-                resultQuery = resultQuery.Where(w => w.ModifyOn <= customerSearchViewModel.DateAddedTo);
+                resultQuery = resultQuery.Where(w => w.CreatedDate <= customerSearchViewModel.DateAddedTo);
             }
 
             //Apply Sorting

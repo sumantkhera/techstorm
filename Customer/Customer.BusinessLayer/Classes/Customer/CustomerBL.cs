@@ -1,13 +1,7 @@
 ﻿using Customer.BusinessLayer.Interface.Customer;
 using Customer.DataLayer.Interface.Customer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Customer.BusinessEntities.Customer;
-using AutoMapper;
-using Customer.BusinessEntities.ClientType;
 using Customer.BusinessLayer.Mapping;
 using Customer.BusinessEntities.Common;
 using Database.Models;

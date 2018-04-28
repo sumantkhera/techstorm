@@ -129,4 +129,10 @@
   <data name="Email" xml:space="preserve">
     <value>Geben Sie eine gültige e-mail-id ein.</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>retr</value>
+  </data>
+  <data name="PrimaryContact" xml:space="preserve">
+    <value />
+  </data>
 </root>

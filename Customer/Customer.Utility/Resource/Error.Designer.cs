@@ -95,5 +95,23 @@ namespace Customer.Utility.Resource {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geben Sie eine 10-stellige Telefonnummer ein..
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geben Sie die 10-stellige primäre Kontaktnummer ein..
+        /// </summary>
+        public static string PrimaryContact {
+            get {
+                return ResourceManager.GetString("PrimaryContact", resourceCulture);
+            }
+        }
     }
 }
