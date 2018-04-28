@@ -14,7 +14,7 @@ namespace Customer.BusinessLayer.Interface.Customer
         /// </summary>
         /// <param name="customer"></param>
         /// <returns>List of customer detail.</returns>
-        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerfilter);
+        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerFilter);
 
         /// <summary>
         /// Save customer Information
