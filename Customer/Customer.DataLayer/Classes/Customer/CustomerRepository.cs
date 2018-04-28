@@ -38,9 +38,10 @@ namespace Customer.DataLayer.Classes.Customer
                 _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList DL");
                 //paging parameter
                 var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
+                DateTime runDateEnd = customerSearchViewModel.DateAddedTo != null ? Convert.ToDateTime(customerSearchViewModel.DateAddedTo).AddMinutes(1439).AddSeconds(59) : DateTime.Now;
 
-            //Get the basic data
-            var resultQuery = (from customer in _databaseContext.CustomerDetails
+                //Get the basic data
+                var resultQuery = (from customer in _databaseContext.CustomerDetails
                               join user in _databaseContext.Users on customer.CreatedBy equals user.UserId
                               join userm in _databaseContext.Users on customer.ModifyBy equals userm.UserId
                               where !customer.IsDeleted && !customer.Customer.IsDeleted
@@ -94,7 +95,7 @@ namespace Customer.DataLayer.Classes.Customer
 
             if (customerSearchViewModel.DateAddedTo != null)
             {
-                resultQuery = resultQuery.Where(w => w.CreatedDate <= customerSearchViewModel.DateAddedTo);
+                resultQuery = resultQuery.Where(w => w.CreatedDate <= runDateEnd);
             }
 
                 //Apply Sorting
