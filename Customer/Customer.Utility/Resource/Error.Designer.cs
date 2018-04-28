@@ -97,7 +97,7 @@ namespace Customer.Utility.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geben Sie eine 10-stellige Telefonnummer ein..
+        ///   Looks up a localized string similar to Enter 10 digit phone number..
         /// </summary>
         public static string Phone {
             get {
@@ -106,11 +106,20 @@ namespace Customer.Utility.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geben Sie die 10-stellige primäre Kontaktnummer ein..
+        ///   Looks up a localized string similar to Enter 10 digit primary contact number.
         /// </summary>
         public static string PrimaryContact {
             get {
                 return ResourceManager.GetString("PrimaryContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required field..
+        /// </summary>
+        public static string RequiredField {
+            get {
+                return ResourceManager.GetString("RequiredField", resourceCulture);
             }
         }
     }

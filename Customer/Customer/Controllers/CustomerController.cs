@@ -4,13 +4,16 @@
     using Customer.BusinessLayer.Interface.Customer;
     using Customer.Filters;
     using Customer.Logging;
+    using System;
+    using System.Net;
+    using System.Net.Http;
     using System.Web.Http;
 
     /// <summary>
     /// This class is used to reponse customer list, add and update.
     /// </summary>
     [RoutePrefix("api/customer")]
-    [CustomAuthorizeAttribute]
+    //[CustomAuthorizeAttribute]
     public class CustomerController : BaseController
     {
         #region Constructor
@@ -47,12 +50,14 @@
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("AddCustomer")]
-        public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
+        public HttpResponseMessage AddCustomer(CustomerDetailViewModel customer)
         {
-            _lLogger.Start(LogLevel.INFO, null, () => "AddCustomer");
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
             var result = this._customerBL.AddCustomer(customer, UserId);
-            _lLogger.End();
-            return Ok(result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         /// <summary>
@@ -61,12 +66,14 @@
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("UpdateCustomer")]
-        public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
+        public HttpResponseMessage UpdateCustomer(CustomerDetailViewModel customer)
         {
-            _lLogger.Start(LogLevel.INFO, null, () => "UpdateCustomer");
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
             var result = this._customerBL.UpdateCustomer(customer, UserId);
-            _lLogger.End();
-            return Ok(result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
         #endregion
     }

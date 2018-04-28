@@ -26,7 +26,7 @@ namespace Customer.Filters
             string message = "Class=" + context.ActionContext.ControllerContext.Controller.ToString() + ", Method=" + context.ActionContext.ActionDescriptor.ActionName + ", Data= " + parameters;
 
             _lLogger.Log(context.ActionContext.ControllerContext.Controller.GetType(), LogLevel.ERROR, message, context.Exception);
-            context.Response = context.Request.CreateResponse(HttpStatusCode.InternalServerError, new { code = "", Message = "Internal server error." });
+            context.Response = context.Request.CreateResponse(HttpStatusCode.BadRequest, new { code = "", Message = "Please try later or contact admin." });
         }
     }
 }

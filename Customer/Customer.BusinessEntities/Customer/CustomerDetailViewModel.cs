@@ -7,11 +7,11 @@ namespace Customer.BusinessEntities.Customer
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "ClientType")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
         [Range(1, Int32.MaxValue, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "ClientType")]
         public int ClientTypeId { get; set; }
 
-        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Classification")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
         [Range(1, Int32.MaxValue, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Classification")]
         public int ClassificationId { get; set; }
 
@@ -21,7 +21,7 @@ namespace Customer.BusinessEntities.Customer
 
         public string Salutation { get; set; }
 
-        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
+        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
         [RegularExpression("^[0-9]{10}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
         public string PrimaryContact { get; set; }
 
@@ -39,11 +39,11 @@ namespace Customer.BusinessEntities.Customer
         public string SecondaryState { get; set; }
         public int SecondaryZipcode { get; set; }
 
-        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Phone")]
+        [Required, StringLength(10, MinimumLength = 10, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
         [RegularExpression("^[0-9]{10}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Phone")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]
         public string Email { get; set; }
 
