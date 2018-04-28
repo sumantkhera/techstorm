@@ -1,16 +1,14 @@
-﻿using Customer.BusinessLayer.Interface.Classification;
-using Customer.BusinessLayer.Interface.ClientType;
-using Customer.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace Customer.Controllers
+﻿namespace Customer.Controllers
 {
-    //[CustomAuthorizeAttribute]
+    using Customer.BusinessLayer.Interface.ClientType;
+    using Customer.Filters;
+    using Customer.Logging;
+    using System.Web.Http;
+
+    /// <summary>
+    /// This class contain the function related to client type.
+    /// </summary>
+    [CustomAuthorizeAttribute]
     public class ClientTypeController : BaseController
     {
         #region Constructor
@@ -26,19 +24,17 @@ namespace Customer.Controllers
 
         #region Get
 
+        /// <summary>
+        /// Get List of ClientType.
+        /// </summary>
+        /// <returns>Json list of client type.</returns>
         [HttpGet]
         public IHttpActionResult GetClientTypeList()
         {
-            try
-            {
-                var result = this._clientTypeBL.GetClientTypeList();
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
-            }
+            _lLogger.Start(LogLevel.INFO, null, () => "GetClientTypeList");
+            var result = this._clientTypeBL.GetClientTypeList();
+            _lLogger.End();
+            return Ok(result);
         }
 
         #endregion

@@ -1,16 +1,19 @@
 ﻿using Customer.BusinessEntities.Classification;
 using Customer.DataLayer.Interface.Classification;
 using Dapper;
-using Database.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace Customer.DataLayer.Classes.Classification
 {
     public class ClassificationRepository : BaseRepository, IClassificationRepository, IDisposable
     {
+        #region Public method
+        /// <summary>
+        /// Get the list of classification.
+        /// </summary>
+        /// <returns>List of classification.</returns>
         public IEnumerable<ClassificationViewModel> GetClassificationList()
         {
             string query = "SELECT Id,ClassificationName FROM Classifications where IsDeleted =0 ";
@@ -19,5 +22,7 @@ namespace Customer.DataLayer.Classes.Classification
                 return con.Query<ClassificationViewModel>(query);
             }
         }
+
+        #endregion
     }
 }
