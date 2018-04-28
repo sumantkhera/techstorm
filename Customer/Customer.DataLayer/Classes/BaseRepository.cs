@@ -1,5 +1,6 @@
 ﻿using Customer.BusinessEntities.Common;
 using Customer.DataLayer.Classes.Enum;
+using Database.Context;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,6 +12,16 @@ namespace Customer.DataLayer.Classes
 {
     public class BaseRepository : IDisposable
     {
+
+        protected DatabaseContext _databaseContext;
+
+        #region CONSTRUCTOR
+        public BaseRepository()
+        {
+            _databaseContext = new DatabaseContext();
+        }
+        #endregion
+
         public string DBConnectionString
         {
             get
@@ -20,7 +31,8 @@ namespace Customer.DataLayer.Classes
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if (_databaseContext != null)
+                _databaseContext.Dispose();
         }
 
         protected AddUpdateResultViewModel CreateSuccessStatus(int id)

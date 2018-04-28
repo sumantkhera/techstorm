@@ -12,14 +12,7 @@ namespace Customer.DataLayer.Classes.Customer
 {
     public class CustomerRepository : BaseRepository, ICustomerRepository
     {
-        DatabaseContext _databaseContext;
 
-        #region CONSTRUCTOR
-        public CustomerRepository()
-        {
-            _databaseContext = new DatabaseContext();
-        }
-        #endregion
 
         #region GET
         /// <summary>
@@ -31,86 +24,99 @@ namespace Customer.DataLayer.Classes.Customer
         {
             //using (var databaseContext = new DatabaseContext())
             //{
-                
-                //paging parameter
-                var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
 
-                //Get the basic data
-                var resultQuery = _databaseContext.CustomerDetails.Where(w => !w.IsDeleted && !w.Customer.IsDeleted)
-                    .Select(s => new CustomerListViewModel
-                    {
-                        BusinessName = s.BusinessName,
-                        Eicode = s.Eicode,
-                        Email = s.Email,
-                        Phone = s.Phone,
-                        PrimaryAddress1 = s.PrimaryAddress1,
-                        PrimaryAddress2 = s.PrimaryAddress2,
-                        PrimaryCity = s.PrimaryCity,
-                        PrimaryState = s.PrimaryState,
-                        PrimaryZipcode = s.PrimaryZipcode,
-                        ModifyOn = s.ModifyOn
+            //paging parameter
+            var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
 
-                    });
+            //Get the basic data
+            var resultQuery = from customer in _databaseContext.CustomerDetails
+                              join user in _databaseContext.Users on customer.CreatedBy equals user.UserId
+                              join userm in _databaseContext.Users on customer.ModifyBy equals userm.UserId
+                              select new CustomerListViewModel
+                              {
+                                  BusinessName = customer.BusinessName,
+                                  Eicode = customer.Eicode,
+                                  Email = customer.Email,
+                                  Phone = customer.Phone,
+                                  PrimaryAddress1 = customer.PrimaryAddress1,
+                                  PrimaryAddress2 = customer.PrimaryAddress2,
+                                  PrimaryCity = customer.PrimaryCity,
+                                  PrimaryState = customer.PrimaryState,
+                                  PrimaryZipcode = customer.PrimaryZipcode,
+                                  ModifyOn = customer.ModifyOn,
+                                  CreatedDate = customer.CreatedOn.Value,
+                                  ModifyBy = userm.UserName,
+                                  CreatedBy = user.UserName
+                              };
 
-                //Apply filter criteria
-                if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
+            //Apply filter criteria
+            if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
+            {
+                resultQuery = resultQuery.Where(w => customerSearchViewModel.CustomerName.Contains(w.BusinessName));
+            }
+
+            if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
+            {
+                resultQuery = resultQuery.Where(w => customerSearchViewModel.Email.Contains(w.Email));
+            }
+
+            if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))
+            {
+                resultQuery = resultQuery.Where(w => w.Phone == customerSearchViewModel.Phone);
+            }
+
+            if (customerSearchViewModel.DateAddedFrom != null)
+            {
+                resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
+            }
+
+            if (customerSearchViewModel.DateAddedFrom != null)
+            {
+                resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
+            }
+
+            if (customerSearchViewModel.DateAddedTo != null)
+            {
+                resultQuery = resultQuery.Where(w => w.ModifyOn <= customerSearchViewModel.DateAddedTo);
+            }
+
+            //Apply Sorting
+            if (customerSearchViewModel.SortOrder == "desc")
+            {
+                switch (customerSearchViewModel.SortColumn)
                 {
-                    resultQuery = resultQuery.Where(w => w.BusinessName == customerSearchViewModel.CustomerName);
+                    case "name":
+                        resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
+                        break;
+
+                    case "date":
+                        resultQuery = resultQuery.OrderByDescending(o => o.ModifyOn);
+                        break;
+
+                    default:
+                        resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
+                        break;
+
+                }
+            }
+            else
+                switch (customerSearchViewModel.SortColumn)
+                {
+                    case "name":
+                        resultQuery = resultQuery.OrderBy(o => o.BusinessName);
+                        break;
+
+                    case "date":
+                        resultQuery = resultQuery.OrderBy(o => o.ModifyOn);
+                        break;
+
+                    default:
+                        resultQuery = resultQuery.OrderBy(o => o.BusinessName);
+                        break;
                 }
 
-                if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
-                {
-                    resultQuery = resultQuery.Where(w => w.Email == customerSearchViewModel.Email);
-                }
-
-                if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))
-                {
-                    resultQuery = resultQuery.Where(w => w.Phone == customerSearchViewModel.Phone);
-                }
-
-                if (customerSearchViewModel.DateAddedFrom != null)
-                {
-                    resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
-                }
-
-                if (customerSearchViewModel.DateAddedFrom != null)
-                {
-                    resultQuery = resultQuery.Where(w => w.ModifyOn >= customerSearchViewModel.DateAddedFrom);
-                }
-
-                if (customerSearchViewModel.DateAddedTo != null)
-                {
-                    resultQuery = resultQuery.Where(w => w.ModifyOn <= customerSearchViewModel.DateAddedTo);
-                }
-
-                //Apply Sorting
-                if (customerSearchViewModel.SortOrder == "desc")
-                {
-                    switch (customerSearchViewModel.SortColumn)
-                    {
-                        case "name":
-                            resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
-                            break;
-
-                        case "date":
-                            resultQuery = resultQuery.OrderByDescending(o => o.ModifyOn);
-                            break;
-                    }
-                }
-                else
-                    switch (customerSearchViewModel.SortColumn)
-                    {
-                        case "name":
-                            resultQuery = resultQuery.OrderBy(o => o.BusinessName);
-                            break;
-
-                        case "date":
-                            resultQuery = resultQuery.OrderBy(o => o.ModifyOn);
-                            break;
-                    }
-
-                //Apply Paging return result
-                return resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
+            //Apply Paging return result
+            return resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
             //}
         }
         #endregion
