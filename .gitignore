@@ -24,3 +24,4 @@ Customer/Customer/Customer.csproj
 /Customer/.vs/Customer/v15/.suo
 Customer/Customer.Utility/bin/*
 Customer/Customer.Utility/obj/*
+*.config

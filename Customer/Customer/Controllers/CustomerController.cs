@@ -4,6 +4,8 @@
     using Customer.BusinessLayer.Interface.Customer;
     using Customer.Filters;
     using System;
+    using System.Net;
+    using System.Net.Http;
     using System.Web;
     using System.Web.Http;
 
@@ -52,10 +54,21 @@
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("AddCustomer")]
-        public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
+        public HttpResponseMessage AddCustomer(CustomerDetailViewModel customer)
         {
-            var result = this._customerBL.AddCustomer(customer, UserId);
-            return Ok(result);
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                var result = this._customerBL.AddCustomer(customer, UserId);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
         #endregion
@@ -67,17 +80,20 @@
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("UpdateCustomer")]
-        public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
+        public HttpResponseMessage UpdateCustomer(CustomerDetailViewModel customer)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
                 var result = this._customerBL.UpdateCustomer(customer, UserId);
-                return Ok(result);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 

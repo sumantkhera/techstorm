@@ -86,5 +86,14 @@ namespace Customer.Utility.Resource {
                 return ResourceManager.GetString("ClientType", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid email id..
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
     }
 }

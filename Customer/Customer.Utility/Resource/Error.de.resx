@@ -126,4 +126,7 @@
   <data name="ClientType" xml:space="preserve">
     <value>Clienttyp ist erforderlich.</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Geben Sie eine gültige e-mail-id ein.</value>
+  </data>
 </root>

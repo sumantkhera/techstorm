@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using aa = Customer.Utility;
+using Utility = Customer.Utility;
 
 namespace Customer.BusinessEntities.Customer
 {
@@ -12,13 +12,15 @@ namespace Customer.BusinessEntities.Customer
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessageResourceType =  (typeof(aa.Resource.Error)), ErrorMessageResourceName = "ClientType")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "ClientType")]
+        [Range(1, Int32.MaxValue, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "ClientType")]
         public int ClientTypeId { get; set; }
 
-        [Required(ErrorMessageResourceType = (typeof(aa.Resource.Error)), ErrorMessageResourceName = "Classification")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Classification")]
+        [Range(1, Int32.MaxValue, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Classification")]
         public int ClassificationId { get; set; }
 
-        [Required, StringLength(500, MinimumLength = 1, ErrorMessageResourceType = (typeof(aa.Resource.Error)), ErrorMessageResourceName = "BusinessName")]
+        [Required, StringLength(500, MinimumLength = 1, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "BusinessName")]
 
         public string BusinessName { get; set; }
 
@@ -42,10 +44,11 @@ namespace Customer.BusinessEntities.Customer
 
 		public string Phone { get; set; }
 
-        [Required, RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        [Required(ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "Email")]
         public string Email { get; set; }
-        
-		public string Eicode { get; set; }
+
+        public string Eicode { get; set; }
 
 	}
 }
