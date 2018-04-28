@@ -1,9 +1,6 @@
 ﻿using Microsoft.Owin.Security.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace CustomerAuthentication.Providers
 {
@@ -28,17 +25,6 @@ namespace CustomerAuthentication.Providers
             if (grant == "password")
             {
                 var username = context.Request.Headers["username"];
-                //using (var dbcontext = new DatabaseContext())
-                //{
-                //    var user = dbcontext.Users.Where(p => p.UserName == username).FirstOrDefault();
-
-                //    if (user != null)
-                //    {
-                //        user.Token = refreshTokenId;
-                //        user.ModifyOn = DateTime.Now;
-                //        await dbcontext.SaveChangesAsync();
-                //    }
-                //}
                 context.SetToken(refreshTokenId);
             }
         }

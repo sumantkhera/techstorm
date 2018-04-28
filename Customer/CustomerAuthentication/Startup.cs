@@ -1,24 +1,19 @@
 ﻿using CustomerAuthentication.Format;
 using CustomerAuthentication.Providers;
-using Database.Context;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.DataHandler.Encoder;
-using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
 using System.Configuration;
-using System.IdentityModel.Tokens;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
 using System.Web.Http;
-using Thinktecture.IdentityModel.Tokens;
 
 [assembly: OwinStartup(typeof(CustomerAuthentication.Startup))]
 namespace CustomerAuthentication
 {
+    /// <summary>
+    /// Start up Classes
+    /// </summary>
     public class Startup
     {
         public void Configuration(IAppBuilder app)
