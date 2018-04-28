@@ -32,6 +32,7 @@ namespace Customer.DataLayer.Classes.Customer
             var resultQuery = from customer in _databaseContext.CustomerDetails
                               join user in _databaseContext.Users on customer.CreatedBy equals user.UserId
                               join userm in _databaseContext.Users on customer.ModifyBy equals userm.UserId
+                              where !customer.IsDeleted && !customer.Customer.IsDeleted
                               select new CustomerListViewModel
                               {
                                   BusinessName = customer.BusinessName,
