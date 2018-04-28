@@ -1,18 +1,21 @@
-﻿using Customer.DataLayer.Interface.ClientType;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Customer.BusinessEntities.ClientType;
-using Database.Context;
-using System.Data.SqlClient;
+﻿using Customer.BusinessEntities.ClientType;
+using Customer.DataLayer.Interface.ClientType;
 using Dapper;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace Customer.DataLayer.Classes.ClientType
 {
+    /// <summary>
+    /// /This class containt the method related to client type.
+    /// </summary>
     public class ClientTypeRepository : BaseRepository, IClientTypeRepository
     {
+        #region Public method.
+        /// <summary>
+        /// Get list of client type.
+        /// </summary>
+        /// <returns>List of clientTypeViewmodel</returns>
         public IEnumerable<ClientTypeViewModel> GetClientTypeList()
         {
             string query = "SELECT Id,ClientTypeName FROM ClientTypes where IsDeleted =0 ";
@@ -21,5 +24,7 @@ namespace Customer.DataLayer.Classes.ClientType
                 return con.Query<ClientTypeViewModel>(query);
             }
         }
+
+        #endregion
     }
 }

@@ -2,11 +2,7 @@
 using Customer.DataLayer.Classes.Enum;
 using Database.Context;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Customer.DataLayer.Classes
 {
@@ -22,6 +18,7 @@ namespace Customer.DataLayer.Classes
         }
         #endregion
 
+        #region Properties
         public string DBConnectionString
         {
             get
@@ -29,12 +26,15 @@ namespace Customer.DataLayer.Classes
                 return ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             }
         }
-        public void Dispose()
-        {
-            if (_databaseContext != null)
-                _databaseContext.Dispose();
-        }
 
+        #endregion
+
+        #region Common Method
+        /// <summary>
+        /// Create sucess status.
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returns>Object of status and message.</returns>
         protected AddUpdateResultViewModel CreateSuccessStatus(int id)
         {
             AddUpdateResultViewModel addUpdateResultViewModel = new AddUpdateResultViewModel();
@@ -42,12 +42,24 @@ namespace Customer.DataLayer.Classes
             return addUpdateResultViewModel;
         }
 
-
+        /// <summary>
+        /// Create failure status
+        /// </summary>
+        /// <returns>Object of status and message.</returns>
         protected AddUpdateResultViewModel CreateFailureNotFoundStatus()
         {
             AddUpdateResultViewModel addUpdateResultViewModel = new AddUpdateResultViewModel();
             addUpdateResultViewModel.Message = ReponseStatus.RecordNotFound.ToString();
             return addUpdateResultViewModel;
+        }
+        
+        #endregion
+
+
+        public void Dispose()
+        {
+            if (_databaseContext != null)
+                _databaseContext.Dispose();
         }
     }
 }

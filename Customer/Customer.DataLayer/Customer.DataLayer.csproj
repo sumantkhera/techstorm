@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -70,6 +73,10 @@
     <ProjectReference Include="..\Customer.BusinessEntities\Customer.BusinessEntities.csproj">
       <Project>{22bdb57d-abe8-4868-a322-6d84c319310c}</Project>
       <Name>Customer.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Customer.Logging\Customer.Logging.csproj">
+      <Project>{2a6d99c5-2953-4ae9-85cf-948865ec15a1}</Project>
+      <Name>Customer.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{c2960124-07c8-4d6c-bdde-ce0540d425ff}</Project>

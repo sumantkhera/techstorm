@@ -9,6 +9,9 @@ using DataModel = Database.Models;
 
 namespace Customer.DataLayer.Interface.Customer
 {
+    /// <summary>
+    /// This interface contain the declaration method of customer class
+    /// </summary>
     public interface ICustomerRepository
     {
 		/// <summary>
@@ -21,15 +24,15 @@ namespace Customer.DataLayer.Interface.Customer
         /// <summary>
         /// Save customer Information
         /// </summary>
-        /// <param name="customer"></param>
-        /// <returns></returns>
+        /// <param name="customer">Customer detail</param>
+        /// <returns>Return Object of status and message</returns>
         AddUpdateResultViewModel Add(DataModel.Customer customer, int userId);
 
         /// <summary>
         /// Update customer Information
         /// </summary>
-        /// <param name="customer"></param>
-        /// <returns></returns>
+        /// <param name="customer">Customer detail</param>
+        /// <returns>Return Object of status and message</returns>
         AddUpdateResultViewModel UpdateCustomer(DataModel.Customer customer, int userId);
 
 	}

@@ -1,12 +1,11 @@
 ﻿using Customer.BusinessEntities.Classification;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Customer.BusinessLayer.Interface.Classification
 {
+    /// <summary>
+    /// This interface contain the method declaration related to classification.
+    /// </summary>
     public interface IClassificationBL
     {
 		/// <summary>

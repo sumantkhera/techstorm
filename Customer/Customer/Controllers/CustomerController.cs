@@ -3,14 +3,14 @@
     using Customer.BusinessEntities.Customer;
     using Customer.BusinessLayer.Interface.Customer;
     using Customer.Filters;
-    using System;
-    using System.Net;
-    using System.Net.Http;
-    using System.Web;
+    using Customer.Logging;
     using System.Web.Http;
 
+    /// <summary>
+    /// This class is used to reponse customer list, add and update.
+    /// </summary>
     [RoutePrefix("api/customer")]
-    //[CustomAuthorizeAttribute]
+    [CustomAuthorizeAttribute]
     public class CustomerController : BaseController
     {
         #region Constructor
@@ -29,20 +29,13 @@
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-
         [HttpPost, Route("GetCustomerList")]
         public IHttpActionResult GetCustomerList(CustomerSearchViewModel customerfilter)
         {
-            try
-            {
-                var result = this._customerBL.GetCustomerList(customerfilter);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return InternalServerError();
-            }
+            _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList");
+            var result = this._customerBL.GetCustomerList(customerfilter);
+            _lLogger.End();
+            return Ok(result);
         }
 
         #endregion
@@ -54,47 +47,26 @@
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("AddCustomer")]
-        public HttpResponseMessage AddCustomer(CustomerDetailViewModel customer)
+        public IHttpActionResult AddCustomer(CustomerDetailViewModel customer)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                var result = this._customerBL.AddCustomer(customer, UserId);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            _lLogger.Start(LogLevel.INFO, null, () => "AddCustomer");
+            var result = this._customerBL.AddCustomer(customer, UserId);
+            _lLogger.End();
+            return Ok(result);
         }
 
-        #endregion
-
-        #region Put
         /// <summary>
         /// Update customer Information
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost, Route("UpdateCustomer")]
-        public HttpResponseMessage UpdateCustomer(CustomerDetailViewModel customer)
+        public IHttpActionResult UpdateCustomer(CustomerDetailViewModel customer)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                var result = this._customerBL.UpdateCustomer(customer, UserId);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            _lLogger.Start(LogLevel.INFO, null, () => "UpdateCustomer");
+            var result = this._customerBL.UpdateCustomer(customer, UserId);
+            _lLogger.End();
+            return Ok(result);
         }
         #endregion
     }

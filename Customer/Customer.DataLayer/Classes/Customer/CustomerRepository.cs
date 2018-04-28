@@ -1,18 +1,29 @@
-﻿using Customer.DataLayer.Interface.Customer;
+﻿using Customer.BusinessEntities.Common;
+using Customer.BusinessEntities.Customer;
+using Customer.DataLayer.Interface.Customer;
+using Customer.Logging;
+using Database.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Customer.BusinessEntities.Customer;
-using Database.Context;
-using DataModel = Database.Models;
 using System.Data.Entity;
-using Customer.BusinessEntities.Common;
+using System.Linq;
+using DataModel = Database.Models;
 
 namespace Customer.DataLayer.Classes.Customer
 {
+    /// <summary>
+    /// This class contain the declaration method of customer class
+    /// </summary>
     public class CustomerRepository : BaseRepository, ICustomerRepository
     {
+        #region Constructor
+        private readonly ILogger _lLogger;
 
+        public CustomerRepository()
+        {
+            _lLogger = Log4NetLogger.Instance;
+        }
+        #endregion
 
         #region GET
         /// <summary>
@@ -22,11 +33,11 @@ namespace Customer.DataLayer.Classes.Customer
         /// <returns></returns>
         public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
-            //using (var databaseContext = new DatabaseContext())
-            //{
-
-            //paging parameter
-            var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
+            try
+            {
+                _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList DL");
+                //paging parameter
+                var skip = customerSearchViewModel.PageSize * (customerSearchViewModel.PageNumber - 1);
 
             //Get the basic data
             var resultQuery = from customer in _databaseContext.CustomerDetails
@@ -60,21 +71,21 @@ namespace Customer.DataLayer.Classes.Customer
                                   ModifyDate = customer.ModifyOn,
                               };
 
-            //Apply filter criteria
-            if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
-            {
-                resultQuery = resultQuery.Where(w => customerSearchViewModel.CustomerName.Contains(w.BusinessName));
-            }
+                //Apply filter criteria
+                if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
+                {
+                    resultQuery = resultQuery.Where(w => customerSearchViewModel.CustomerName.Contains(w.BusinessName));
+                }
 
-            if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
-            {
-                resultQuery = resultQuery.Where(w => customerSearchViewModel.Email.Contains(w.Email));
-            }
+                if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
+                {
+                    resultQuery = resultQuery.Where(w => customerSearchViewModel.Email.Contains(w.Email));
+                }
 
-            if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))
-            {
-                resultQuery = resultQuery.Where(w => w.Phone == customerSearchViewModel.Phone);
-            }
+                if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))
+                {
+                    resultQuery = resultQuery.Where(w => w.Phone == customerSearchViewModel.Phone);
+                }
 
             if (customerSearchViewModel.DateAddedFrom != null)
             {
@@ -86,44 +97,50 @@ namespace Customer.DataLayer.Classes.Customer
                 resultQuery = resultQuery.Where(w => w.CreatedDate <= customerSearchViewModel.DateAddedTo);
             }
 
-            //Apply Sorting
-            if (customerSearchViewModel.SortOrder == "desc")
-            {
-                switch (customerSearchViewModel.SortColumn)
+                //Apply Sorting
+                if (customerSearchViewModel.SortOrder == "desc")
                 {
-                    case "name":
-                        resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
-                        break;
+                    switch (customerSearchViewModel.SortColumn)
+                    {
+                        case "name":
+                            resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
+                            break;
 
-                    case "date":
-                        resultQuery = resultQuery.OrderByDescending(o => o.ModifyOn);
-                        break;
+                        case "date":
+                            resultQuery = resultQuery.OrderByDescending(o => o.ModifyOn);
+                            break;
 
-                    default:
-                        resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
-                        break;
+                        default:
+                            resultQuery = resultQuery.OrderByDescending(o => o.BusinessName);
+                            break;
 
+                    }
                 }
+                else
+                    switch (customerSearchViewModel.SortColumn)
+                    {
+                        case "name":
+                            resultQuery = resultQuery.OrderBy(o => o.BusinessName);
+                            break;
+
+                        case "date":
+                            resultQuery = resultQuery.OrderBy(o => o.ModifyOn);
+                            break;
+
+                        default:
+                            resultQuery = resultQuery.OrderBy(o => o.BusinessName);
+                            break;
+                    }
+                var result = resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
+                _lLogger.End();
+                //Apply Paging return result
+                return result;
             }
-            else
-                switch (customerSearchViewModel.SortColumn)
-                {
-                    case "name":
-                        resultQuery = resultQuery.OrderBy(o => o.BusinessName);
-                        break;
-
-                    case "date":
-                        resultQuery = resultQuery.OrderBy(o => o.ModifyOn);
-                        break;
-
-                    default:
-                        resultQuery = resultQuery.OrderBy(o => o.BusinessName);
-                        break;
-                }
-
-            //Apply Paging return result
-            return resultQuery.Skip(skip).Take(customerSearchViewModel.PageSize).ToList();
-            //}
+            catch (Exception ex)
+            {
+                _lLogger.Log(typeof(string), LogLevel.ERROR, "GetCustomerList", ex);
+                throw;
+            }
         }
         #endregion
 
@@ -133,11 +150,12 @@ namespace Customer.DataLayer.Classes.Customer
         /// Save customer Information
         /// </summary>
         /// <param name="customer"></param>
-        /// <returns></returns>
+        /// <returns>Return Object of status and message</returns>
         public AddUpdateResultViewModel Add(DataModel.Customer customer, int userId)
         {
             try
             {
+                _lLogger.Start(LogLevel.INFO, null, () => "AddCustomer DL");
                 DataModel.Customer newCustomer = new DataModel.Customer();
                 newCustomer = customer;
 
@@ -146,11 +164,13 @@ namespace Customer.DataLayer.Classes.Customer
                     databaseContext.Customers.Add(newCustomer);
                     databaseContext.SaveChanges(userId);
                 }
-                return CreateSuccessStatus(newCustomer.Id);
+                var result= CreateSuccessStatus(newCustomer.Id);
+                _lLogger.End();
+                return result;
             }
             catch (Exception ex)
             {
-                //log the exception
+                _lLogger.Log(typeof(string), LogLevel.ERROR, "Add Customer", ex);
                 throw;
             }
         }
@@ -163,11 +183,12 @@ namespace Customer.DataLayer.Classes.Customer
         /// Update customer Information
         /// </summary>
         /// <param name="customer"></param>
-        /// <returns></returns>
+        /// <returns>Return Object of status and message</returns>
         public AddUpdateResultViewModel UpdateCustomer(DataModel.Customer customer, int userId)
         {
             try
             {
+                _lLogger.Start(LogLevel.INFO, null, () => "UpdateCustomer DL");
                 DataModel.Customer newCustomer = new DataModel.Customer();
                 newCustomer = customer;
 
@@ -185,12 +206,14 @@ namespace Customer.DataLayer.Classes.Customer
                     });
                     databaseContext.CustomerDetails.AddRange(customer.CustomDetail);
                     databaseContext.SaveChanges(userId);
-                    return CreateSuccessStatus(newCustomer.Id);
+                    var result = CreateSuccessStatus(newCustomer.Id);
+                    _lLogger.End();
+                    return result;
                 }
             }
             catch (Exception ex)
             {
-                //log the exception
+                _lLogger.Log(typeof(string), LogLevel.ERROR, "Add Customer", ex);
                 throw;
             }
         }
