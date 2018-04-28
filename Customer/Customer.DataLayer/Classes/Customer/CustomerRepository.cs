@@ -75,12 +75,12 @@ namespace Customer.DataLayer.Classes.Customer
                 //Apply filter criteria
                 if (!string.IsNullOrEmpty(customerSearchViewModel.CustomerName))
                 {
-                    resultQuery = resultQuery.Where(w => customerSearchViewModel.CustomerName.Contains(w.BusinessName));
+                    resultQuery = resultQuery.Where(w => w.BusinessName.Contains(customerSearchViewModel.CustomerName));
                 }
 
                 if (!string.IsNullOrEmpty(customerSearchViewModel.Email))
                 {
-                    resultQuery = resultQuery.Where(w => customerSearchViewModel.Email.Contains(w.Email));
+                    resultQuery = resultQuery.Where(w => w.Email.Contains(customerSearchViewModel.Email));
                 }
 
                 if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))

@@ -62,15 +62,15 @@ namespace CustomerAuthentication.Format
                 if (!string.IsNullOrWhiteSpace(userName))
                 {
                     var user = dbcontext.Users.Where(m => m.UserName == userName).FirstOrDefault();
-                    if (user != null && !string.IsNullOrEmpty(user.Token)) //&& m.ExpiryDate > DateTime.UtcNow
-                    {
-                        jwt = user.Token;
-                    }
-                    else
-                    {
-                        user.Token = jwt;
-                        dbcontext.SaveChangesAsync();
-                    }
+                    //if (user != null && !string.IsNullOrEmpty(user.Token)) //&& m.ExpiryDate > DateTime.UtcNow
+                    //{
+                    //    jwt = user.Token;
+                    //}
+                    //else
+                    //{
+                    user.Token = jwt;
+                    dbcontext.SaveChangesAsync();
+                    //}
                 }
                 string val;
                 if (data.Properties.Dictionary.TryGetValue("jwtToken", out val))
