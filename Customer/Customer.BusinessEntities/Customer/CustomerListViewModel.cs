@@ -36,5 +36,13 @@ namespace Customer.BusinessEntities.Customer
         public string PrimaryState { get; set; }
         public int PrimaryZipcode { get; set; }
         public DateTime? ModifyOn { get; set; }
+        public string PrimaryContact { get; set; }
+        public int? ClassificationId { get; set; }
+        public string SecondaryAddress1 { get; set; }
+        public int? ClientTypeId { get; set; }
+        public string SecondaryAddress2 { get; set; }
+        public string SecondaryCity { get; set; }
+        public string SecondaryState { get; set; }
+        public int SecondaryZipcode { get; set; }
     }
 }

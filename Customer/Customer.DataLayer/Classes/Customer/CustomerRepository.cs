@@ -35,6 +35,7 @@ namespace Customer.DataLayer.Classes.Customer
                               where !customer.IsDeleted && !customer.Customer.IsDeleted
                               select new CustomerListViewModel
                               {
+                                  Id = customer.Customer.Id,
                                   BusinessName = customer.BusinessName,
                                   Eicode = customer.Eicode,
                                   Email = customer.Email,
@@ -47,7 +48,15 @@ namespace Customer.DataLayer.Classes.Customer
                                   ModifyOn = customer.ModifyOn,
                                   CreatedDate = customer.CreatedOn.Value,
                                   ModifyBy = userm.UserName,
-                                  CreatedBy = user.UserName
+                                  CreatedBy = user.UserName,
+                                  PrimaryContact = customer.PrimaryContact,
+                                  ClassificationId = customer.ClassificationId,
+                                  ClientTypeId = customer.ClientTypeId,
+                                  SecondaryAddress1 = customer.SecondaryAddress1,
+                                  SecondaryAddress2 = customer.SecondaryAddress2,
+                                  SecondaryCity = customer.SecondaryCity,
+                                  SecondaryState = customer.SecondaryState,
+                                  SecondaryZipcode = customer.SecondaryZipcode,
                               };
 
             //Apply filter criteria
