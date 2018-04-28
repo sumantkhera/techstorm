@@ -22,3 +22,5 @@ Customer/Customer/Customer.csproj
 /Customer/.vs/Customer/v15/Server/sqlite3/storage.ide
 /Customer/.vs/Customer/v15/Server/sqlite3/db.lock
 /Customer/.vs/Customer/v15/.suo
+Customer/Customer.Utility/bin/*
+Customer/Customer.Utility/obj/*
