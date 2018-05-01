@@ -218,6 +218,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Customer.Utility\Customer.Utility.csproj">
+      <Project>{43466f2c-57a7-4814-8056-9f0fe6043eac}</Project>
+      <Name>Customer.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{c2960124-07c8-4d6c-bdde-ce0540d425ff}</Project>
       <Name>Database</Name>

@@ -16,6 +16,10 @@ namespace Customer.BusinessLayer.Interface.Customer
         /// <returns>List of customer detail.</returns>
         IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerFilter);
 
+        int GetCustomerListCount(CustomerSearchViewModel customerFilter);
+
+        
+
         /// <summary>
         /// Save customer Information
         /// </summary>
@@ -29,5 +33,12 @@ namespace Customer.BusinessLayer.Interface.Customer
         /// <param name="customer"></param>
         /// <returns>Return json of status and message</returns>
         AddUpdateResultViewModel UpdateCustomer(CustomerDetailViewModel customer, int userId);
+        
+        /// <summary>
+        /// Get Customer Image.
+        /// </summary>
+        /// <param name="customerId">CustomerId</param>
+        /// <returns>Image Byte</returns>
+        byte[] GetCustomerImage(int customerId);
     }
 }

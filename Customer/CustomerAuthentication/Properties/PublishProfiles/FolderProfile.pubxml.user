@@ -9,20 +9,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>D:\Projects\TechStorm\Publish\OAuth</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/Customer.Utility.dll">
+      <publishTime>05/01/2018 18:36:24</publishTime>
+    </File>
+    <File Include="bin/Customer.Utility.pdb">
+      <publishTime>05/01/2018 18:36:24</publishTime>
+    </File>
     <File Include="bin/CustomerAuthentication.dll">
-      <publishTime>04/28/2018 17:25:26</publishTime>
+      <publishTime>05/01/2018 18:36:32</publishTime>
     </File>
     <File Include="bin/CustomerAuthentication.pdb">
-      <publishTime>04/28/2018 17:25:26</publishTime>
+      <publishTime>05/01/2018 18:36:32</publishTime>
     </File>
     <File Include="bin/Database.dll">
-      <publishTime>04/28/2018 15:00:23</publishTime>
+      <publishTime>05/01/2018 18:36:26</publishTime>
     </File>
     <File Include="bin/Database.dll.config">
-      <publishTime>04/28/2018 15:58:51</publishTime>
+      <publishTime>05/01/2018 18:34:51</publishTime>
     </File>
     <File Include="bin/Database.pdb">
-      <publishTime>04/28/2018 15:00:23</publishTime>
+      <publishTime>05/01/2018 18:36:26</publishTime>
+    </File>
+    <File Include="bin/de/Customer.Utility.resources.dll">
+      <publishTime>05/01/2018 18:36:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/25/2014 01:34:42</publishTime>
@@ -583,7 +592,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/25/2014 15:53:46</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/28/2018 17:25:26</publishTime>
+      <publishTime>05/01/2018 18:36:33</publishTime>
     </File>
   </ItemGroup>
 </Project>

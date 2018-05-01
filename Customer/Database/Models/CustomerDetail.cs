@@ -23,28 +23,33 @@ namespace Database.Models
 
         public string PrimaryContact { get; set; }
 
+        public string Phone { get; set; }
+
         public string PrimaryAddress1 { get; set; }
+
         public string PrimaryAddress2 { get; set; }
+
+        public string PrimaryAddress3 { get; set; }
+
         public string PrimaryCity { get; set; }
-        public string PrimaryState { get; set; }
-        public int PrimaryZipcode { get; set; }
+
+        public string PrimaryCounty { get; set; }
+
+        public string PrimaryEicode { get; set; }
 
         public bool IsSecondaryAddressSame { get; set; }
 
         public string SecondaryAddress1 { get; set; }
+
         public string SecondaryAddress2 { get; set; }
+
+        public string SecondaryAddress3 { get; set; }
+
         public string SecondaryCity { get; set; }
-        public string SecondaryState { get; set; }
-        public int SecondaryZipcode { get; set; }
 
-        public string Phone { get; set; }
+        public string SecondaryCounty { get; set; }
 
-        public string Email { get; set; }
-
-        public string Eicode { get; set; }
-
-        public string Eicode2 { get; set; }
-
+        public string SecondaryEicode { get; set; }
 
     }
 }

@@ -34,7 +34,15 @@ namespace Customer.BusinessLayer.Classes.Customer
         public IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel)
         {
             _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList BL");
-            var result  =  _customerService.GetCustomerList(customerSearchViewModel);
+            var result = _customerService.GetCustomerList(customerSearchViewModel);
+            _lLogger.End();
+            return result;
+        }
+
+        public int GetCustomerListCount(CustomerSearchViewModel customerFilter)
+        {
+            _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList BL");
+            var result = _customerService.GetCustomerListCount(customerFilter);
             _lLogger.End();
             return result;
         }
@@ -51,6 +59,12 @@ namespace Customer.BusinessLayer.Classes.Customer
             var customerDetail = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerDetail>.Map(customerDetailView);
             customer.CustomDetail = new List<CustomerDetail>();
             customer.CustomDetail.Add(customerDetail);
+            if (customerDetailView.Image != null)
+            {
+                var customerImage = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerImage>.Map(customerDetailView);
+                customer.CustomImage = new List<CustomerImage>();
+                customer.CustomImage.Add(customerImage);
+            }
             var result = _customerService.Add(customer, userId);
             _lLogger.End();
             return result;
@@ -67,10 +81,25 @@ namespace Customer.BusinessLayer.Classes.Customer
             var customerDetail = AutoMapperHelper<CustomerDetailViewModel, Database.Models.CustomerDetail>.Map(customerDetailView);
             customer.CustomDetail = new List<CustomerDetail>();
             customer.CustomDetail.Add(customerDetail);
-            var result= _customerService.UpdateCustomer(customer, userId);
+            var result = _customerService.UpdateCustomer(customer, customerDetailView.Image, userId);
             _lLogger.End();
             return result;
         }
+
+        /// <summary>
+        /// Get Customer Image.
+        /// </summary>
+        /// <param name="customerId">CustomerId</param>
+        /// <returns>Image Byte</returns>
+        public byte[] GetCustomerImage(int customerId)
+        {
+            _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerImage BL");
+            var result = _customerService.GetCustomerImage(customerId);
+            _lLogger.End();
+            return result;
+        }
+
+
         #endregion
     }
 }

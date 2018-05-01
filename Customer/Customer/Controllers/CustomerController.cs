@@ -5,8 +5,10 @@
     using Customer.Filters;
     using Customer.Logging;
     using System;
+    using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Web;
     using System.Web.Http;
 
     /// <summary>
@@ -41,6 +43,20 @@
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        [HttpPost, Route("GetCustomerListCount")]
+        public IHttpActionResult GetCustomerListCount(CustomerSearchViewModel customerfilter)
+        {
+            _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList");
+            var result = this._customerBL.GetCustomerList(customerfilter);
+            _lLogger.End();
+            return Ok(result);
+        }
+
         #endregion
 
         #region Post
@@ -55,6 +71,19 @@
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            var httpRequest = HttpContext.Current.Request;
+
+            if (httpRequest.Files != null && httpRequest.Files.Count > 0)
+            {
+                var postedFile = httpRequest.Files[0];
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+                    using (var binaryReader = new BinaryReader(postedFile.InputStream))
+                    {
+                        customer.Image = binaryReader.ReadBytes(postedFile.ContentLength);
+                    }
+                }
             }
             var result = this._customerBL.AddCustomer(customer, UserId);
             return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -72,8 +101,36 @@
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
+            var httpRequest = HttpContext.Current.Request;
+
+            if (httpRequest.Files != null && httpRequest.Files.Count > 0)
+            {
+                var postedFile = httpRequest.Files[0];
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+                    using (var binaryReader = new BinaryReader(postedFile.InputStream))
+                    {
+                        customer.Image = binaryReader.ReadBytes(postedFile.ContentLength);
+                    }
+                }
+            }
             var result = this._customerBL.UpdateCustomer(customer, UserId);
             return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        /// <summary>
+        /// Get Customer Image.
+        /// </summary>
+        /// <param name="customerId">CustomerId</param>
+        /// <returns>Image Byte</returns>
+        public HttpResponseMessage GetCustomImage(int customerId)
+        {
+            byte[] imgData = this._customerBL.GetCustomerImage(customerId); ;
+            MemoryStream ms = new MemoryStream(imgData);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StreamContent(ms);
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+            return response;
         }
         #endregion
     }

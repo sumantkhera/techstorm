@@ -25,3 +25,5 @@ Customer/Customer/Customer.csproj
 Customer/Customer.Utility/bin/*
 Customer/Customer.Utility/obj/*
 *.config
+Customer/Customer.Business.Test/bin/*
+Customer/Customer.Business.Test/obj/*

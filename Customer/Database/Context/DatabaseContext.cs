@@ -15,6 +15,8 @@ namespace Database.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerDetail> CustomerDetails { get; set; }
 
+        public DbSet<CustomerImage> CustomerImages { get; set; }
+
         public DbSet<Classification> Classifications { get; set; }
 
         public DbSet<ClientType> ClientTypes { get; set; }
@@ -28,6 +30,11 @@ namespace Database.Context
                  .HasRequired(e => e.Customer)
                 .WithMany(d => d.CustomDetail)
                 .HasForeignKey(e => e.CustomerId);
+
+            modelBuilder.Entity<CustomerImage>()
+                .HasRequired(e => e.Customer)
+               .WithMany(d => d.CustomImage)
+               .HasForeignKey(e => e.CustomerId);
             base.OnModelCreating(modelBuilder);
         }
 

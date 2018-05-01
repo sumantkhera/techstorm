@@ -14,12 +14,14 @@ namespace Customer.DataLayer.Interface.Customer
     /// </summary>
     public interface ICustomerRepository
     {
-		/// <summary>
-		/// Get customer Information
-		/// </summary>
-		/// <param name="customer"></param>
-		/// <returns></returns>
-		IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel);
+        /// <summary>
+        /// Get customer Information
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        IEnumerable<CustomerListViewModel> GetCustomerList(CustomerSearchViewModel customerSearchViewModel);
+
+        int GetCustomerListCount(CustomerSearchViewModel customerSearchViewModel);
 
         /// <summary>
         /// Save customer Information
@@ -33,7 +35,13 @@ namespace Customer.DataLayer.Interface.Customer
         /// </summary>
         /// <param name="customer">Customer detail</param>
         /// <returns>Return Object of status and message</returns>
-        AddUpdateResultViewModel UpdateCustomer(DataModel.Customer customer, int userId);
-
-	}
+        AddUpdateResultViewModel UpdateCustomer(DataModel.Customer customer, byte[] image, int userId);
+        
+        /// <summary>
+        /// Get Customer Image.
+        /// </summary>
+        /// <param name="customerId">CustomerId</param>
+        /// <returns>Image Byte</returns>
+        byte[] GetCustomerImage(int customerId);
+    }
 }

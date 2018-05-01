@@ -69,7 +69,7 @@ namespace CustomerAuthentication.Format
                     //else
                     //{
                     user.Token = jwt;
-                    dbcontext.SaveChangesAsync();
+                    dbcontext.SaveChanges();
                     //}
                 }
                 string val;

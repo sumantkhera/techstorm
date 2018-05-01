@@ -1,4 +1,5 @@
-﻿using Database.Context;
+﻿using Customer.Utility.Extension;
+using Database.Context;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -166,59 +167,6 @@ namespace CustomerAuthentication.Providers
                 return Task.FromResult<object>(null);
             }
             return base.MatchEndpoint(context);
-        }
-
-    }
-    public static class StringHtmlUtilities
-    {
-        private static string _htmlTags =
-            "!DOCTYPE|a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|big|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|command|datalist|dd|del|details|dfn|dir|div|dl|dt|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h6|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|small|source|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|abbr|object";
-
-
-        public static bool StringContainsHtmlTags(string str)
-        {
-            return Regex.IsMatch(str, $@"(?s)<\s?({_htmlTags}).*?", RegexOptions.IgnoreCase);
-        }
-        public static string RemoveHtml(string text)
-        {
-            var first = Regex.Replace(text, @"<(" + _htmlTags + @").*</(" + _htmlTags + @")>", string.Empty, RegexOptions.IgnoreCase);
-            var second = Regex.Replace(first, @"</(" + _htmlTags + @")*?>", string.Empty, RegexOptions.IgnoreCase);
-
-            return Regex.Replace(second, @"<(" + _htmlTags + @").*(</(" + _htmlTags + @")>)?", string.Empty, RegexOptions.IgnoreCase);
-        }
-    }
-
-    public static class OriginUrlExtensions
-    {
-        public static string GetOriginUrl(this IOwinRequest request)
-        {
-            if (request?.Headers == null) return null;
-
-            var origin = request.Headers["Origin"];
-            var referer = request.Headers["Referer"];
-
-            if (origin == null && referer == null) return null;
-            var requestUri = new Uri(origin ?? referer);
-            var requestOrigin = requestUri.Scheme + "://" + requestUri.Host + (requestUri.Port > 0 && requestUri.Port != 80 && requestUri.Port != 443 ? ":" + requestUri.Port : string.Empty);
-            return requestOrigin;
-        }
-
-        /// <summary>
-        /// OriginUrlExtensions: Function is used to test the current origin of the request
-        /// </summary>
-        /// <param name="request">extention method of HttpRequestMessage</param>
-        /// <returns></returns>
-        public static string GetOriginUrl(this HttpRequestMessage request)
-        {
-            if (request?.Headers == null) return null;
-
-            var origin = request.Headers.Contains("Origin") ? request.Headers.FirstOrDefault(h => h.Key == "Origin").Value.FirstOrDefault() : null;
-            var referer = request.Headers.Referrer;
-
-            if (origin == null && referer == null) return null;
-            var requestUri = origin != null ? new Uri(origin) : referer;
-            var requestOrigin = requestUri.Scheme + "://" + requestUri.Host + (requestUri.Port > 0 && requestUri.Port != 80 && requestUri.Port != 443 ? ":" + requestUri.Port : string.Empty);
-            return requestOrigin;
         }
 
     }

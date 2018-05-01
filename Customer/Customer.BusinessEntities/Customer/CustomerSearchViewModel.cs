@@ -11,9 +11,13 @@ namespace Customer.BusinessEntities.Customer
     {
         public string CustomerName { get; set; }
 
-        public string Email { get; set; }
-
         public string Phone { get; set; }
+
+        public string County { get; set; }
+
+        public string City { get; set; }
+
+        public string EirCode { get; set; }
 
         public DateTime? DateAddedFrom { get; set; }
 
