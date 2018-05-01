@@ -52,7 +52,7 @@
         public IHttpActionResult GetCustomerListCount(CustomerSearchViewModel customerfilter)
         {
             _lLogger.Start(LogLevel.INFO, null, () => "GetCustomerList");
-            var result = this._customerBL.GetCustomerList(customerfilter);
+            var result = this._customerBL.GetCustomerListCount(customerfilter);
             _lLogger.End();
             return Ok(result);
         }
@@ -72,19 +72,6 @@
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            var httpRequest = HttpContext.Current.Request;
-
-            if (httpRequest.Files != null && httpRequest.Files.Count > 0)
-            {
-                var postedFile = httpRequest.Files[0];
-                if (postedFile != null && postedFile.ContentLength > 0)
-                {
-                    using (var binaryReader = new BinaryReader(postedFile.InputStream))
-                    {
-                        customer.Image = binaryReader.ReadBytes(postedFile.ContentLength);
-                    }
-                }
-            }
             var result = this._customerBL.AddCustomer(customer, UserId);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -101,19 +88,7 @@
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            var httpRequest = HttpContext.Current.Request;
-
-            if (httpRequest.Files != null && httpRequest.Files.Count > 0)
-            {
-                var postedFile = httpRequest.Files[0];
-                if (postedFile != null && postedFile.ContentLength > 0)
-                {
-                    using (var binaryReader = new BinaryReader(postedFile.InputStream))
-                    {
-                        customer.Image = binaryReader.ReadBytes(postedFile.ContentLength);
-                    }
-                }
-            }
+           
             var result = this._customerBL.UpdateCustomer(customer, UserId);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

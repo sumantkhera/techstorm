@@ -26,6 +26,10 @@ namespace Customer.BusinessLayer.Mapping
                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
                 .ReverseMap();
 
+            CreateMap<CustomerDetailViewModel, Database.Models.CustomerImage>()
+   .ForMember(dest => dest.Image, opts => opts.MapFrom(src => src.Image))
+    .ReverseMap();
+
 
             CreateMap<CustomerDetailViewModel, Database.Models.CustomerDetail>()
                 .ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace Customer.BusinessEntities.Customer
 {
@@ -54,6 +55,13 @@ namespace Customer.BusinessEntities.Customer
 
         public string SecondaryEicode { get; set; }
 
-        public byte[] Image { get; set; }
+        public byte[] Image
+        {
+            get
+            {
+                return Encoding.ASCII.GetBytes(this.ClientPhoto);
+            }
+        }
+        public string ClientPhoto { get; set; }
     }
 }
