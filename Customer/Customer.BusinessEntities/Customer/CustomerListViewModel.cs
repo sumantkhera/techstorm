@@ -1,7 +1,7 @@
-﻿using Customer.BusinessEntities.Common;
+﻿using Customer.ViewModel.Common;
 using System;
 
-namespace Customer.BusinessEntities.Customer
+namespace Customer.ViewModel.Customer
 {
     public class CustomerListViewModel : BaseViewModel
     {

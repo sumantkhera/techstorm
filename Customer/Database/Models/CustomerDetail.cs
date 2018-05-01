@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Database.Models
+namespace Customer.Entities
 {
-    public class CustomerDetail : BaseModel
+    public class CustomerDetail : BaseEntities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

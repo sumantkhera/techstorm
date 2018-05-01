@@ -55,14 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BaseRepository.cs" />
-    <Compile Include="Classes\Classification\ClassificationRepository.cs" />
-    <Compile Include="Classes\ClientType\ClientTypeRepository.cs" />
-    <Compile Include="Classes\Customer\CustomerRepository.cs" />
-    <Compile Include="Classes\Enum\Enum.cs" />
-    <Compile Include="Interface\Classification\IClassificationRepository.cs" />
-    <Compile Include="Interface\ClientType\IClientTypeRepository.cs" />
-    <Compile Include="Interface\Customer\ICustomerRepository.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\Classification\ClassificationRepository.cs" />
+    <Compile Include="Repository\ClientType\ClientTypeRepository.cs" />
+    <Compile Include="Repository\Customer\CustomerRepository.cs" />
+    <Compile Include="Repository\Enum\Enum.cs" />
+    <Compile Include="IRepository\Classification\IClassificationRepository.cs" />
+    <Compile Include="IRepository\ClientType\IClientTypeRepository.cs" />
+    <Compile Include="IRepository\Customer\ICustomerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,17 +70,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Customer.BusinessEntities\Customer.BusinessEntities.csproj">
+    <ProjectReference Include="..\Customer.BusinessEntities\Customer.ViewModel.csproj">
       <Project>{22bdb57d-abe8-4868-a322-6d84c319310c}</Project>
-      <Name>Customer.BusinessEntities</Name>
+      <Name>Customer.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Customer.Logging\Customer.Logging.csproj">
       <Project>{2a6d99c5-2953-4ae9-85cf-948865ec15a1}</Project>
       <Name>Customer.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Database\Database.csproj">
+    <ProjectReference Include="..\Database\Customer.Entities.csproj">
       <Project>{c2960124-07c8-4d6c-bdde-ce0540d425ff}</Project>
-      <Name>Database</Name>
+      <Name>Customer.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

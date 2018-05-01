@@ -1,6 +1,6 @@
 ﻿namespace Customer.Controllers
 {
-    using Customer.BusinessLayer.Interface.Classification;
+    using Customer.BusinessLayer.IService.Classification;
     using Customer.Filters;
     using Customer.Logging;
     using System.Web.Http;
@@ -13,8 +13,8 @@
     {
         #region Constructor
 
-        private readonly IClassificationBL _classificationBL;
-        public ClassificationController(IClassificationBL classificationBL)
+        private readonly IClassificationService _classificationBL;
+        public ClassificationController(IClassificationService classificationBL)
         {
             this._classificationBL = classificationBL;
         }

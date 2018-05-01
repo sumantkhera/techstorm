@@ -75,21 +75,21 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
-    <Compile Include="Classes\Classification\ClassificationBL.cs" />
-    <Compile Include="Classes\ClientType\ClientTypeBL.cs" />
-    <Compile Include="Classes\Customer\CustomerBL.cs" />
-    <Compile Include="Interface\Classification\IClassificationBL.cs" />
-    <Compile Include="Interface\ClientType\IClientTypeBL.cs" />
-    <Compile Include="Interface\Customer\ICustomerBL.cs" />
+    <Compile Include="Service\Classification\ClassificationService.cs" />
+    <Compile Include="Service\ClientType\ClientTypeService.cs" />
+    <Compile Include="Service\Customer\CustomerService.cs" />
+    <Compile Include="IService\Classification\IClassificationService.cs" />
+    <Compile Include="IService\ClientType\IClientTypeService.cs" />
+    <Compile Include="IService\Customer\ICustomerService.cs" />
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Mapping\AutoMapperHelper.cs" />
     <Compile Include="Mapping\DataLayerEntitiesToBusinessEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Customer.BusinessEntities\Customer.BusinessEntities.csproj">
+    <ProjectReference Include="..\Customer.BusinessEntities\Customer.ViewModel.csproj">
       <Project>{22bdb57d-abe8-4868-a322-6d84c319310c}</Project>
-      <Name>Customer.BusinessEntities</Name>
+      <Name>Customer.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Customer.DataLayer\Customer.DataLayer.csproj">
       <Project>{8fd2816a-39d4-45e0-9036-dd0de67d481b}</Project>
@@ -99,9 +99,9 @@
       <Project>{2a6d99c5-2953-4ae9-85cf-948865ec15a1}</Project>
       <Name>Customer.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Database\Database.csproj">
+    <ProjectReference Include="..\Database\Customer.Entities.csproj">
       <Project>{c2960124-07c8-4d6c-bdde-ce0540d425ff}</Project>
-      <Name>Database</Name>
+      <Name>Customer.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

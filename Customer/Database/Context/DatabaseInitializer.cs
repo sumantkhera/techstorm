@@ -1,4 +1,4 @@
-﻿using Database.Models;
+﻿using Customer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

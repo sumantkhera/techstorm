@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Customer.BusinessEntities.Security
+namespace Customer.ViewModel.Security
 {
     using System;
     using System.Security.Claims;

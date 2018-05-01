@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Database.Models
+namespace Customer.Entities
 {
-    public class ClientType : BaseModel
+    public class ClientType : BaseEntities
     {
         [Key]
         public short Id { get; set; }

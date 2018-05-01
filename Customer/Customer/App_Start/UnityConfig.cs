@@ -1,15 +1,9 @@
-using Customer.BusinessLayer.Classes.Classification;
-using Customer.BusinessLayer.Classes.ClientType;
-using Customer.BusinessLayer.Classes.Customer;
-using Customer.BusinessLayer.Interface.Classification;
-using Customer.BusinessLayer.Interface.ClientType;
-using Customer.BusinessLayer.Interface.Customer;
-using Customer.DataLayer.Classes.Classification;
-using Customer.DataLayer.Classes.ClientType;
-using Customer.DataLayer.Classes.Customer;
-using Customer.DataLayer.Interface.Classification;
-using Customer.DataLayer.Interface.ClientType;
-using Customer.DataLayer.Interface.Customer;
+using Customer.DataLayer.IRepository.Classification;
+using Customer.DataLayer.IRepository.ClientType;
+using Customer.DataLayer.IRepository.Customer;
+using Customer.DataLayer.Repository.Classification;
+using Customer.DataLayer.Repository.ClientType;
+using Customer.DataLayer.Repository.Customer;
 using System;
 
 using Unity;
@@ -60,9 +54,9 @@ namespace Customer
             #endregion
 
             #region BAL
-            container.RegisterType<ICustomerBL, CustomerBL>();
-            container.RegisterType<IClassificationBL, ClassificationBL>();
-            container.RegisterType<IClientTypeBL, ClientTypeBL>();
+            container.RegisterType<BusinessLayer.IService.Customer.ICustomerService, BusinessLayer.Service.Customer.CustomerService>();
+            container.RegisterType<BusinessLayer.IService.Classification.IClassificationService, BusinessLayer.Service.Classification.ClassificationService>();
+            container.RegisterType<BusinessLayer.IService.ClientType.IClientTypeService, BusinessLayer.Service.ClientType.ClientTypeService>();
             #endregion
         }
     }

@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{C2960124-07C8-4D6C-BDDE-CE0540D425FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Entities", "Database\Customer.Entities.csproj", "{C2960124-07C8-4D6C-BDDE-CE0540D425FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer", "Customer\Customer.csproj", "{BD5EF8C3-1DF6-4C2B-9EFC-7DE742A43D5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.API", "Customer\Customer.API.csproj", "{BD5EF8C3-1DF6-4C2B-9EFC-7DE742A43D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.BusinessEntities", "Customer.BusinessEntities\Customer.BusinessEntities.csproj", "{22BDB57D-ABE8-4868-A322-6D84C319310C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.ViewModel", "Customer.BusinessEntities\Customer.ViewModel.csproj", "{22BDB57D-ABE8-4868-A322-6D84C319310C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.BusinessLayer", "Customer.BusinessLayer\Customer.BusinessLayer.csproj", "{875C95CD-CA78-4298-AB55-2E59E04D0DC0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.DataLayer", "Customer.DataLayer\Customer.DataLayer.csproj", "{8FD2816A-39D4-45E0-9036-DD0DE67D481B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAuthentication", "CustomerAuthentication\CustomerAuthentication.csproj", "{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Authentication", "CustomerAuthentication\Customer.Authentication.csproj", "{03CB41A1-DCE7-4D13-8C04-F0917F4C3B7C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Logging", "Customer.Logging\Customer.Logging.csproj", "{2A6D99C5-2953-4AE9-85CF-948865EC15A1}"
 EndProject

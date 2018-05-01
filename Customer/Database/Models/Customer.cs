@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Database.Models
+namespace Customer.Entities
 {
-    public class Customer : BaseModel
+    public class Customer : BaseEntities
     {
         [Key]
         public int Id { get; set; }

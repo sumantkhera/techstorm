@@ -1,4 +1,4 @@
-﻿using Customer.BusinessEntities.Security;
+﻿using Customer.ViewModel.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;

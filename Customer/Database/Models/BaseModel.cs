@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Database.Models
+namespace Customer.Entities
 {
-    public class BaseModel
+    public class BaseEntities
     {
         public DateTime? CreatedOn { get; set; }
 

@@ -1,4 +1,4 @@
-﻿using Database.Models;
+﻿using Customer.Entities;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Database.Context
         {
 
         }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer.Entities.Customer> Customers { get; set; }
         public DbSet<CustomerDetail> CustomerDetails { get; set; }
 
         public DbSet<CustomerImage> CustomerImages { get; set; }
@@ -41,21 +41,21 @@ namespace Database.Context
         public int SaveChanges(int userId)
         {
             var selectedEntityList = ChangeTracker.Entries()
-                                    .Where(x => x.Entity is BaseModel &&
+                                    .Where(x => x.Entity is BaseEntities &&
                                     (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             foreach (var entity in selectedEntityList)
             {
                 if (entity.State == EntityState.Added)
                 {
-                    ((BaseModel)entity.Entity).CreatedOn = DateTime.Now;
-                    ((BaseModel)entity.Entity).CreatedBy = userId;
-                    ((BaseModel)entity.Entity).Version++;
+                    ((BaseEntities)entity.Entity).CreatedOn = DateTime.Now;
+                    ((BaseEntities)entity.Entity).CreatedBy = userId;
+                    ((BaseEntities)entity.Entity).Version++;
                 }
-                if (!((BaseModel)entity.Entity).Version.HasValue)
-                    ((BaseModel)entity.Entity).Version = 1;
-                ((BaseModel)entity.Entity).ModifyOn = DateTime.Now;
-                ((BaseModel)entity.Entity).ModifyBy = userId;
+                if (!((BaseEntities)entity.Entity).Version.HasValue)
+                    ((BaseEntities)entity.Entity).Version = 1;
+                ((BaseEntities)entity.Entity).ModifyOn = DateTime.Now;
+                ((BaseEntities)entity.Entity).ModifyBy = userId;
             }
             return base.SaveChanges();
         }

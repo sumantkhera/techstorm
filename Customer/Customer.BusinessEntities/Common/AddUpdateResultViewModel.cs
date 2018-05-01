@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Customer.BusinessEntities.Common
+namespace Customer.ViewModel.Common
 {
     public class AddUpdateResultViewModel
     {

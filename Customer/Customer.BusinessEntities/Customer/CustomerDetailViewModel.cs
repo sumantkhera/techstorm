@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Customer.BusinessEntities.Customer
+namespace Customer.ViewModel.Customer
 {
     public class CustomerDetailViewModel
     {

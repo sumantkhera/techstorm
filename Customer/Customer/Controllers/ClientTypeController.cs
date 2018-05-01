@@ -1,6 +1,6 @@
 ﻿namespace Customer.Controllers
 {
-    using Customer.BusinessLayer.Interface.ClientType;
+    using Customer.BusinessLayer.IService.ClientType;
     using Customer.Filters;
     using Customer.Logging;
     using System.Web.Http;
@@ -13,8 +13,8 @@
     {
         #region Constructor
 
-        private readonly IClientTypeBL _clientTypeBL;
-        public ClientTypeController(IClientTypeBL clientTypeBL)
+        private readonly IClientTypeService _clientTypeBL;
+        public ClientTypeController(IClientTypeService clientTypeBL)
         {
             this._clientTypeBL = clientTypeBL;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Customer.BusinessEntities.Classification
+namespace Customer.ViewModel.Classification
 {
     public class ClassificationViewModel
     {

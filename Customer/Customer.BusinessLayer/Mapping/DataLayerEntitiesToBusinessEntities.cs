@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Customer.BusinessEntities.Classification;
-using Customer.BusinessEntities.Customer;
-using Database.Models;
+using Customer.Entities;
+using Customer.ViewModel.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +21,16 @@ namespace Customer.BusinessLayer.Mapping
 
         private void ConfigMap()
         {
-            CreateMap<CustomerDetailViewModel, Database.Models.Customer>()
+            CreateMap<CustomerDetailViewModel, Customer.Entities.Customer>()
                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
                 .ReverseMap();
 
-            CreateMap<CustomerDetailViewModel, Database.Models.CustomerImage>()
+            CreateMap<CustomerDetailViewModel, Customer.Entities.CustomerImage>()
    .ForMember(dest => dest.Image, opts => opts.MapFrom(src => src.Image))
     .ReverseMap();
 
 
-            CreateMap<CustomerDetailViewModel, Database.Models.CustomerDetail>()
+            CreateMap<CustomerDetailViewModel, Customer.Entities.CustomerDetail>()
                 .ForMember(dest => dest.BusinessName, opts => opts.MapFrom(src => src.BusinessName))
                 .ForMember(dest => dest.ClassificationId, opts => opts.MapFrom(src => src.ClassificationId))
                 .ForMember(dest => dest.ClientTypeId, opts => opts.MapFrom(src => src.ClientTypeId))

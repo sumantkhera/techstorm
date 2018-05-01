@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Customer.BusinessEntities.ClientType
+namespace Customer.ViewModel.ClientType
 {
     public class ClientTypeViewModel
     {

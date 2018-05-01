@@ -1,5 +1,5 @@
-using Customer.DataLayer.Classes.Customer;
-using Customer.DataLayer.Interface.Customer;
+using Customer.DataLayer.IRepository.Customer;
+using Customer.DataLayer.Repository.Customer;
 using System;
 
 using Unity;

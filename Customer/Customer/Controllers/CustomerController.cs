@@ -1,9 +1,9 @@
 ﻿namespace Customer.Controllers
 {
-    using Customer.BusinessEntities.Customer;
-    using Customer.BusinessLayer.Interface.Customer;
+    using Customer.BusinessLayer.IService.Customer;
     using Customer.Filters;
     using Customer.Logging;
+    using Customer.ViewModel.Customer;
     using System;
     using System.IO;
     using System.Net;
@@ -20,8 +20,8 @@
     {
         #region Constructor
 
-        private readonly ICustomerBL _customerBL;
-        public CustomerController(ICustomerBL customerBL)
+        private readonly ICustomerService _customerBL;
+        public CustomerController(ICustomerService customerBL)
         {
             this._customerBL = customerBL;
         }
