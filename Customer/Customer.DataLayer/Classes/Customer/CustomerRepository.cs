@@ -186,14 +186,14 @@ namespace Customer.DataLayer.Classes.Customer
                                PrimaryAddress3 = customer.PrimaryAddress3,
                                PrimaryCity = customer.PrimaryCity,
                                PrimaryCounty = customer.PrimaryCounty,
-                               PrimaryEicode = customer.PrimaryEicode,
+                               PrimaryeirCode = customer.PrimaryEicode,
                                IsSecondaryAddressSame = customer.IsSecondaryAddressSame,
                                SecondaryAddress1 = customer.SecondaryAddress1,
                                SecondaryAddress2 = customer.SecondaryAddress2,
                                SecondaryAddress3 = customer.SecondaryAddress3,
                                SecondaryCity = customer.SecondaryCity,
                                SecondaryCounty = customer.SecondaryCounty,
-                               SecondaryEicode = customer.SecondaryEicode,
+                               SecondaryeirCode = customer.SecondaryEicode,
                                ModifyOn = customer.ModifyOn,
                                CreatedOn = customer.Customer.CreatedOn.Value,
                                ModifyBy = userm.UserName,
@@ -218,7 +218,7 @@ namespace Customer.DataLayer.Classes.Customer
 
             if (!string.IsNullOrEmpty(customerSearchViewModel.EirCode))
             {
-                resultQuery = resultQuery.Where(w => w.PrimaryEicode.Contains(customerSearchViewModel.EirCode) || w.SecondaryEicode.Contains(customerSearchViewModel.EirCode));
+                resultQuery = resultQuery.Where(w => w.PrimaryeirCode.Contains(customerSearchViewModel.EirCode) || w.SecondaryeirCode.Contains(customerSearchViewModel.EirCode));
             }
 
             if (!string.IsNullOrEmpty(customerSearchViewModel.Phone))

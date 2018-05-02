@@ -25,8 +25,8 @@ namespace Customer.BusinessEntities.Customer
 
         public string Salutation { get; set; }
 
-        [Required, StringLength(10, MinimumLength = 1, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
-        [RegularExpression("^[0-9]*$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
+        //[Required, StringLength(10, MinimumLength = 1, ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "RequiredField")]
+        //[RegularExpression("^[0-9]*$", ErrorMessageResourceType = (typeof(Utility.Resource.Error)), ErrorMessageResourceName = "PrimaryContact")]
         public string PrimaryContact { get; set; }
 
         public string PrimaryAddress1 { get; set; }
@@ -39,7 +39,7 @@ namespace Customer.BusinessEntities.Customer
 
         public string PrimaryCounty { get; set; }
 
-        public string PrimaryEicode { get; set; }
+        public string Primaryeircode { get; set; }
 
         public bool IsSecondaryAddressSame { get; set; }
 
@@ -53,12 +53,14 @@ namespace Customer.BusinessEntities.Customer
 
         public string SecondaryCounty { get; set; }
 
-        public string SecondaryEicode { get; set; }
+        public string Secondaryeircode { get; set; }
 
         public byte[] Image
         {
             get
             {
+                if (string.IsNullOrEmpty(this.ClientPhoto))
+                    return null;
                 return Encoding.ASCII.GetBytes(this.ClientPhoto);
             }
         }

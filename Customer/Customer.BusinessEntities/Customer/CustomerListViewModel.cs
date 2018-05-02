@@ -31,7 +31,7 @@ namespace Customer.BusinessEntities.Customer
 
         public string PrimaryCounty { get; set; }
 
-        public string PrimaryEicode { get; set; }
+        public string PrimaryeirCode { get; set; }
 
         public bool IsSecondaryAddressSame { get; set; }
 
@@ -45,6 +45,6 @@ namespace Customer.BusinessEntities.Customer
 
         public string SecondaryCounty { get; set; }
 
-        public string SecondaryEicode { get; set; }
+        public string SecondaryeirCode { get; set; }
     }
 }

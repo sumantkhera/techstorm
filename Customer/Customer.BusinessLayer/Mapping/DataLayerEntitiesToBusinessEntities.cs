@@ -50,6 +50,8 @@ namespace Customer.BusinessLayer.Mapping
                 .ForMember(dest => dest.SecondaryCity, opts => opts.MapFrom(src => src.SecondaryCity))
                 .ForMember(dest => dest.SecondaryCounty, opts => opts.MapFrom(src => src.SecondaryCounty))
                 .ForMember(dest => dest.PrimaryContact, opts => opts.MapFrom(src => src.PrimaryContact))
+                .ForMember(dest => dest.PrimaryEicode, opts => opts.MapFrom(src => src.Primaryeircode))
+                .ForMember(dest => dest.SecondaryEicode, opts => opts.MapFrom(src => src.Secondaryeircode))
                 .ReverseMap();
 
         }
